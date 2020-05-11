@@ -13,3 +13,25 @@ C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\JLS++.csproj.GenerateResource.
 C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\JLS++.csproj.CoreCompileInputs.cache
 C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\JLS++.exe
 C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\JLS++.pdb
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.csprojAssemblyReference.cache
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\MainWindow.g.cs
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\App.g.cs
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++_MarkupCompile.cache
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++_MarkupCompile.lref
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.exe
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.pdb
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\JLS++.exe.config
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\JLS++.exe
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\JLS++.pdb
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\MainWindow.baml
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.g.resources
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS__.Properties.Resources.resources
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.csproj.GenerateResource.cache
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.csproj.CoreCompileInputs.cache
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\JLS++ Library.dll
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\JLS++ Library.pdb
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.csproj.CopyComplete
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS__.assets.resources
+C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\bin\Debug\System.Data.SQLite.dll
+C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\bin\Debug\System.Data.SQLite.xml
+C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\bin\Debug\System.Data.SQLite.dll.config
