@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JLS++", "JLS++\JLS++.csproj", "{31EA326D-7F00-49F6-B305-840C68411364}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JLS++ Library", "JLS++ Library\JLS++ Library.csproj", "{F8F09EB8-B699-414A-A0D3-BB012E58C2AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31EA326D-7F00-49F6-B305-840C68411364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31EA326D-7F00-49F6-B305-840C68411364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31EA326D-7F00-49F6-B305-840C68411364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31EA326D-7F00-49F6-B305-840C68411364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F09EB8-B699-414A-A0D3-BB012E58C2AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F09EB8-B699-414A-A0D3-BB012E58C2AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F09EB8-B699-414A-A0D3-BB012E58C2AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F09EB8-B699-414A-A0D3-BB012E58C2AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56F6F807-27CF-44C3-9238-0D738E645E86}
+	EndGlobalSection
+EndGlobal
