@@ -8,6 +8,8 @@ namespace JLS___Library
     /// </summary>
     public class WebControl
     {
+        public static string usr_agent, lang;
+        public static bool fake_plugin, use_win, gpu_acc;
         public IWebDriver chromeDriver = new ChromeDriver();
         public int login()
         {

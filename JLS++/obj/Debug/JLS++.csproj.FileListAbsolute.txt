@@ -31,7 +31,8 @@ C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.csproj.CoreCompil
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\JLS++ Library.dll
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\JLS++ Library.pdb
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.csproj.CopyComplete
-C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS__.assets.resources
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\bin\Debug\System.Data.SQLite.dll
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\bin\Debug\System.Data.SQLite.xml
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\last.g.cs
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\last.baml
