@@ -1,27 +1,33 @@
 ﻿using System.IO;
 using System.Data.SQLite;
+using System;
+using System.Collections;
 
 namespace JLS___Library.Data
 {
     public class Database
     {
-        private string DB_ROOT = System.Environment.GetEnvironmentVariable("appdata") + "/.JLS++/data.db";
-        private SQLiteConnection con;
+        private string DB_ROOT = Environment.GetEnvironmentVariable("appdata") + "/.JLS++/data.db";
+        private string HISTORY_ROOT = Environment.GetEnvironmentVariable("appdata") + "/.JLS++/homeworks.db";
+        private SQLiteConnection con, hw;
         /// <summary>
         /// 데이터베이스를 초기화합니다.
         /// </summary>
         public Database()
         {
-            if (!File.Exists(DB_ROOT))
+            if (!File.Exists(DB_ROOT) || !File.Exists(HISTORY_ROOT))
             {
-                Directory.CreateDirectory(System.Environment.GetEnvironmentVariable("appdata") + "/.JLS++");
-                DirectoryInfo rootDir = new DirectoryInfo(System.Environment.GetEnvironmentVariable("appdata") + "/.JLS++");
+                //TODO: 새로 생성한 후 어디선가 con.close()가 안됨
+                Directory.CreateDirectory(Environment.GetEnvironmentVariable("appdata") + "/.JLS++");
+                DirectoryInfo rootDir = new DirectoryInfo(Environment.GetEnvironmentVariable("appdata") + "/.JLS++");
                 if ((rootDir.Attributes & FileAttributes.Hidden) != FileAttributes.Hidden)
                 {
                     rootDir.Attributes = rootDir.Attributes | FileAttributes.Hidden;
                 }
                 SQLiteConnection.CreateFile(DB_ROOT);
                 con = new SQLiteConnection("Data Source = " + DB_ROOT + "; Version = 3;");
+                SQLiteConnection.CreateFile(HISTORY_ROOT);
+                hw = new SQLiteConnection("Data Source = " + HISTORY_ROOT + "; Version = 3;");
                 mkTable("profile", "key INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                     "name TEXT," +
                     "id TEXT," +
@@ -32,13 +38,21 @@ namespace JLS___Library.Data
                     "use_window BOOL," +
                     "gpu_acc BOOL," +
                     "lang TEXT");
+                mkTableOfHw("hw", "key INTEGER PRIMARY KEY NOT NULL," +
+                    "content TEXT NOT NULL," +
+                    "get INTEGER NOT NULL");
                 exeCommand("insert into browser (usr_agent, fake_plugin, use_window, gpu_acc, lang) values " +
                     "(\'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/60.0.3112.50 Safari/537.36\'," +
                     "false, false, true, \'ko-KR\')");
+                File.WriteAllText(System.Environment.GetEnvironmentVariable("appdata") + "/.JLS++/setting.json", "{\n" +
+                    "\"rather_cache\":true,\n" +
+                    "\"loadWhenStart\":true\n" +
+                    "}");
             }
             else
             {
                 con = new SQLiteConnection("Data Source = " + DB_ROOT + "; Version = 3;");
+                hw = new SQLiteConnection("Data Source = " + HISTORY_ROOT + "; Version=3;");
             }
         }
         /// <summary>
@@ -56,6 +70,20 @@ namespace JLS___Library.Data
             return returm;
         }
         /// <summary>
+        /// HW db에 대한 명령 수행을 담당합니다.
+        /// ...ㅋ
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns>실행 결과를 반환합니다.</returns>
+        private int exeCommandOfHw(string command)
+        {
+            hw.Open();
+            SQLiteCommand cmd = new SQLiteCommand(command, hw);
+            int returm = cmd.ExecuteNonQuery();
+            hw.Close();
+            return returm;
+        }
+        /// <summary>
         /// SQLite에서 NonQuery 명령을 실행합니다.
         /// 이때 SQLite를 열지 않습니다.
         /// </summary>
@@ -69,6 +97,20 @@ namespace JLS___Library.Data
             return returm;
         }
         /// <summary>
+        /// SQLite에서 NonQuery 명령을 실행합니다.
+        /// 이때 SQLite를 열지 않습니다.
+        /// 업계포상 ㅗㅜㅑ
+        /// </summary>
+        /// <param name="con">SQLite 연결 객체입니다.</param>
+        /// <param name="command">실행할 명령입니다.</param>
+        /// <returns>실행 결과를 반환합니다.</returns>
+        private int exeCommandWithoutOpenOfHw(string command)
+        {
+            SQLiteCommand cmd = new SQLiteCommand(command, hw);
+            int returm = cmd.ExecuteNonQuery();
+            return returm;
+        }
+        /// <summary>
         /// 테이블을 생성합니다.
         /// </summary>
         /// <param name="name">테이블의 이름입니다.</param>
@@ -77,6 +119,10 @@ namespace JLS___Library.Data
         public int mkTable(string name, string config)
         {
             return exeCommand("create table " + name + " (" + config + ")");
+        }
+        public int mkTableOfHw(string name, string config)
+        {
+            return exeCommandOfHw("create table " + name + " (" + config + ")");
         }
         /// <summary>
         /// Database를 모두 로딩해서 적용합니다.
@@ -113,24 +159,89 @@ namespace JLS___Library.Data
         public void saveAll(Profile prof)
         {
             con.Open();
-            string cmds = "select * from profile";
-            bool flag = true;
-            SQLiteCommand cmd = new SQLiteCommand(cmds, con);
-            SQLiteDataReader read = cmd.ExecuteReader();
-            while (read.Read())
+            if (!(prof.Name == null || prof.Id == null || prof.Pwd == null))
             {
-                exeCommandWithoutOpen("update profile set name=\'" + prof.Name + "\', id=\'" + prof.Id + "\', password=\'" + prof.Pwd + "\' where key=1");
-                flag = false;
-            }
-            read.Close();
-            con.Close();
-            if (flag)
-            {
-                exeCommand("insert into profile (name, id, password) values (\'" + prof.Name + "\', \'" + prof.Id + "\', \'" + prof.Pwd + "\')");
+                string cmds = "select * from profile";
+                bool flag = true;
+                SQLiteCommand cmd = new SQLiteCommand(cmds, con);
+                SQLiteDataReader read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    exeCommandWithoutOpen("update profile set name=\'" + prof.Name + "\', id=\'" + prof.Id + "\', password=\'" + prof.Pwd + "\' where key=1");
+                    flag = false;
+                }
+                read.Close();
+                con.Close();
+                if (flag)
+                {
+                    exeCommand("insert into profile (name, id, password) values (\'" + prof.Name + "\', \'" + prof.Id + "\', \'" + prof.Pwd + "\')");
+                }
             }
             exeCommand("update browser set usr_agent=\'" + WebControl.usr_agent + "\', fake_plugin=" + WebControl.fake_plugin
                 + ", use_window=" + WebControl.use_win + ", gpu_acc=" + WebControl.gpu_acc + ", lang=\'" + WebControl.lang
                 + "\' where key=1");
+            Setting.save();
+        }
+        public void addHw(int date, string content)
+        {
+            int today = Int32.Parse(DateTime.Now.ToString("yyyyMMdd"));
+            hw.Open();
+            string cmds = "select key from hw";
+            SQLiteCommand cmd = new SQLiteCommand(cmds, hw);
+            SQLiteDataReader read = cmd.ExecuteReader();
+            while (read.Read())
+            {
+                if((Int64)read["key"] == date)
+                {
+                    exeCommandWithoutOpenOfHw("update hw set content=\'" + content + "\', get=" + today + ", key=" + date + " where key=" + date) ;
+                    hw.Close();
+                    return;
+                }
+            }
+            read.Close();
+            exeCommandWithoutOpenOfHw("insert into hw (key, content, get) values (" + date + ", \'" + content + "\', " + today + ")");
+            hw.Close();
+        }
+        public string getHw(int date)
+        {
+            hw.Open();
+            string cmds = "select * from hw";
+            SQLiteCommand cmd = new SQLiteCommand(cmds, hw);
+            SQLiteDataReader read = cmd.ExecuteReader();
+            while (read.Read())
+            {
+                if((Int64)read["key"] == date)
+                {
+                    string s = read["content"].ToString();
+                    read.Close();
+                    hw.Close();
+                    return s;
+                }
+            }
+            read.Close();
+            hw.Close();
+            return "NO CACHE DATA FOUND";
+        }
+        public string getLatestHw()
+        {
+            debug.makeLog("Checking cache");
+            hw.Open();
+            string cmds = "select * from hw";
+            SQLiteCommand cmd = new SQLiteCommand(cmds, hw);
+            SQLiteDataReader readx = cmd.ExecuteReader();
+            int DateOfLast = 0;
+            string ContentOfLast = "NO CACHE DATA FOUND";
+            while (readx.Read())
+            {
+                if((Int64)readx["key"] > DateOfLast)
+                {
+                    ContentOfLast = readx["content"].ToString();
+                }
+            }
+            readx.Close();
+            hw.Close();
+            debug.makeLog("Cache returned");
+            return ContentOfLast;
         }
         /// <summary>
         /// db를 완전히 지웁니다.
@@ -138,6 +249,10 @@ namespace JLS___Library.Data
         public void suicide()
         {
             File.Delete(DB_ROOT);
+        }
+        public void suicideOfHw()
+        {
+            File.Delete(HISTORY_ROOT);
         }
     }
 }

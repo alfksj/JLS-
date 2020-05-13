@@ -44,6 +44,10 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
             "Selenium.Chrome.WebDriver": {
               "target": "Package",
               "version": "[81.0.0, )"

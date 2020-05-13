@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,6 +16,8 @@ namespace JLS__
         private WebControl web = null;
         public MainWindow()
         {
+            HelloWorld hwx = new HelloWorld();
+            hwx.Show();
             InitializeComponent();
             string[] args = Environment.GetCommandLineArgs();
             if(args.Length>1) //첫번째 인수는 프로세스 시작 위치니까 믿고 거른다.
@@ -44,7 +45,9 @@ namespace JLS__
                     if (cmd == null) break;
                     if (cmd.Equals("-RESET_REQUEST"))
                     {
+                        debug.makeLog("Reset Data Reqested");
                         db.suicide();
+                        db.suicideOfHw();
                         db = null;
                         db = new Database();
                     }
@@ -59,18 +62,8 @@ namespace JLS__
                 }
             }
             db.loadAll();
-            if (Secure.Propile != null)
-            {
-                setName.Text = Secure.Propile.Name;
-                setID.Text = Secure.Propile.Id;
-                setPwd.Password = Secure.Propile.Pwd;
-                name.Content = Secure.Propile.Name;
-            }
-            lang.Text = WebControl.lang;
-            showWin.IsChecked = WebControl.use_win;
-            gpuac.IsChecked = WebControl.gpu_acc;
-            fake_plugin.IsChecked = WebControl.fake_plugin;
-            usragent.Text = WebControl.usr_agent;
+            Setting.load();
+            UpdateWindow();
             savePath.Text = System.Environment.GetEnvironmentVariable("appdata") + "\\.JLS++\\data.db";
             Task.Run(async () =>//시간 새로고침
             {
@@ -81,12 +74,26 @@ namespace JLS__
                     Thread.Sleep(1000);
                 }
             });
-            web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang);
-            Task.Run( () =>//시작할때 눈치껏 브라우저 초기화 & 접속 & 숙제 로드
+            web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang, db);
+            Task.Run(async () =>//시작할때 눈치껏 브라우저 초기화 & 접속 & 숙제 로드
             {
                 string hw = web.load();
-                html_stream.Text = hw;
+                await time.Dispatcher.InvokeAsync(() =>
+                {
+                    if(hw.Equals("<font size=\"4\" color=\"red\"><b>로그인할 수 없습니다.</b><br />ID와 비밀번호가 정확한지 확인해 주세요.<br />서버 지연이 너무 심하면 이런 오류가 뜰 수 도 있습니다.</font>") ||
+                    hw.Equals("<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />인터넷문제이거나 JLS서버를 일시적으로 이용할 수 없는 듯 합니다.</font>") ||
+                    Setting.LoadDatAtSet) {
+                        html_stream.Text = hw;
+                    }
+                });
             });
+            string cach = db.getLatestHw();
+            if(!cach.Equals("no data") && Setting.LoadCache)
+            {
+                debug.makeLog("Use cache date first");
+                html_stream.Text = cach;
+            }
+            hwx.Hide();
         }
 
         public void UpdateWindow()
@@ -103,6 +110,8 @@ namespace JLS__
             gpuac.IsChecked = WebControl.gpu_acc;
             fake_plugin.IsChecked = WebControl.fake_plugin;
             usragent.Text = WebControl.usr_agent;
+            ratc.IsChecked = Setting.LoadCache;
+            getAtSt.IsChecked = Setting.LoadDatAtSet;
         }
 
         private void setting_Click(object sender, RoutedEventArgs e)
@@ -148,6 +157,7 @@ namespace JLS__
             profileset.Visibility = Visibility.Visible;
             browserset.Visibility = Visibility.Hidden;
             fileset.Visibility = Visibility.Hidden;
+            crawl_set.Visibility = Visibility.Hidden;
         }
 
         private void browser_Click(object sender, RoutedEventArgs e)
@@ -157,6 +167,7 @@ namespace JLS__
             profileset.Visibility = Visibility.Hidden;
             browserset.Visibility = Visibility.Visible;
             fileset.Visibility = Visibility.Hidden;
+            crawl_set.Visibility = Visibility.Hidden;
         }
 
         private void file_Click(object sender, RoutedEventArgs e)
@@ -166,16 +177,64 @@ namespace JLS__
             profileset.Visibility = Visibility.Hidden;
             browserset.Visibility = Visibility.Hidden;
             fileset.Visibility = Visibility.Visible;
+            crawl_set.Visibility = Visibility.Hidden;
+        }
+        private void crawl_Click(object sender, RoutedEventArgs e)
+        {
+            Whatsetting.Content = "크롤링 설정";
+            greeting_setting.Visibility = Visibility.Hidden;
+            profileset.Visibility = Visibility.Hidden;
+            browserset.Visibility = Visibility.Hidden;
+            fileset.Visibility = Visibility.Hidden;
+            crawl_set.Visibility = Visibility.Visible;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("프로필을 포함한 모든 설정이 초기화됩니다.\n확실합니까?", "JLS++", MessageBoxButton.YesNo);
             if(ret == MessageBoxResult.Yes)
             {
-                last show = new last("설정을 초기화하기 위해 프로그램을 다시 시작합니다.\nSQLite: Database Reset.", "-RESET_REQUEST");
+                last show = new last("설정을 초기화하기 위해 프로그램을 다시 시작합니다.\nSQLite: Database Reset.", "-RESET_REQUEST,");
                 show.Show();
                 Close();
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string s;
+            if (!date.Text.Equals(""))
+            {
+                s = db.getHw(Int32.Parse(date.Text));
+                if(s.Equals("NO CACHE DATA FOUND"))
+                {
+                    s = web.justGet(Int32.Parse(date.Text));
+                }
+            }
+            else
+            {
+                s = db.getLatestHw();
+                if (s.Equals("NO CACHE DATA FOUND"))
+                {
+                    s = web.justGet();
+                }
+            }
+            html_stream.Text = s;
+        }
+
+        private void del_cache_Click(object sender, RoutedEventArgs e)
+        {
+            db.suicideOfHw();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            web.close();
+            //꼭 로딩중에 이상한거 눌러서 오류만드는 유저 대비용
+            hwreg.IsEnabled = false;
+            setting.IsEnabled = false;
+            web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang, db);
+            hwreg.IsEnabled = true;
+            setting.IsEnabled = true;
         }
     }
 }
