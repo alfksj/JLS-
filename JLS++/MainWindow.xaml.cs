@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,23 +14,50 @@ namespace JLS__
     public partial class MainWindow : Window
     {
         private Database db = new Database();
+        private WebControl web = null;
         public MainWindow()
         {
+            InitializeComponent();
             string[] args = Environment.GetCommandLineArgs();
-            if(args.Length!=0)
+            if(args.Length>1) //첫번째 인수는 프로세스 시작 위치니까 믿고 거른다.
             {
-                if(args[1].Equals("-RESET_REQUEST"))
+                char[] ss = args[1].ToCharArray();
+                string[] sq = new string[1024];
+                int par = 0, start = 0, len = 0, abs = 0;
+                foreach(char pae in ss)
                 {
-                    db.suicide();
-                    db = null;
-                    db = new Database();
+                    if(pae=='-')
+                    {
+                        start = abs;
+                    }
+                    else if(pae==',')
+                    {
+                        sq[par] = args[1].Substring(start, len);
+                        par++;
+                        len = -1;
+                    }
+                    len++;
+                    abs++;
                 }
-                if(args[1].Equals("-debug"))
+                foreach(string cmd in sq)
                 {
-                    Console.WriteLine("YOU ARE USING DEBUG MODE");
+                    if (cmd == null) break;
+                    if (cmd.Equals("-RESET_REQUEST"))
+                    {
+                        db.suicide();
+                        db = null;
+                        db = new Database();
+                    }
+                    else if (cmd.Equals("-debug"))
+                    {
+                        Console.WriteLine("YOU ARE USING DEBUG MODE\n========================================================");
+                    }
+                    else if(cmd.Equals("-no_window"))
+                    {
+                        Hide();
+                    }
                 }
             }
-            InitializeComponent();
             db.loadAll();
             if (Secure.Propile != null)
             {
@@ -44,7 +72,7 @@ namespace JLS__
             fake_plugin.IsChecked = WebControl.fake_plugin;
             usragent.Text = WebControl.usr_agent;
             savePath.Text = System.Environment.GetEnvironmentVariable("appdata") + "\\.JLS++\\data.db";
-            Task.Run(async () =>
+            Task.Run(async () =>//시간 새로고침
             {
                 while (true)
                 {
@@ -52,6 +80,12 @@ namespace JLS__
                     await time.Dispatcher.InvokeAsync(() => time.Content = regen);
                     Thread.Sleep(1000);
                 }
+            });
+            web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang);
+            Task.Run( () =>//시작할때 눈치껏 브라우저 초기화 & 접속 & 숙제 로드
+            {
+                string hw = web.load();
+                html_stream.Text = hw;
             });
         }
 
@@ -64,7 +98,6 @@ namespace JLS__
                 setPwd.Password = Secure.Propile.Pwd;
                 name.Content = Secure.Propile.Name;
             }
-            r2.Visibility = Visibility.Hidden;
             lang.Text = WebControl.lang;
             showWin.IsChecked = WebControl.use_win;
             gpuac.IsChecked = WebControl.gpu_acc;
@@ -78,6 +111,7 @@ namespace JLS__
             {
                 db.loadAll();
                 UpdateWindow();
+                r2.Visibility = Visibility.Hidden;
                 settingPage.Visibility = Visibility.Visible;
             }
             else
@@ -96,6 +130,7 @@ namespace JLS__
                 greeting_setting.Visibility = Visibility.Visible;
                 profileset.Visibility = Visibility.Hidden;
                 browserset.Visibility = Visibility.Hidden;
+                r2.Visibility = Visibility.Visible;
             }
         }
 
@@ -132,7 +167,6 @@ namespace JLS__
             browserset.Visibility = Visibility.Hidden;
             fileset.Visibility = Visibility.Visible;
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult ret = MessageBox.Show("프로필을 포함한 모든 설정이 초기화됩니다.\n확실합니까?", "JLS++", MessageBoxButton.YesNo);
@@ -140,7 +174,7 @@ namespace JLS__
             {
                 last show = new last("설정을 초기화하기 위해 프로그램을 다시 시작합니다.\nSQLite: Database Reset.", "-RESET_REQUEST");
                 show.Show();
-                this.Close();
+                Close();
             }
         }
     }

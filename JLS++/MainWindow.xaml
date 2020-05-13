@@ -72,7 +72,16 @@
                 </Grid>
                 <Grid Margin="133,114,755,274"/>
                 <Border x:Name="r2" BorderBrush="Black" BorderThickness="2,0,2,2" Margin="-2,-1,-2,0">
-                    <Grid/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="12*"/>
+                        </Grid.ColumnDefinitions>
+                        <RichTextBox x:Name="homwork_region" Margin="39,57,30,37" RenderTransformOrigin="-0.55,0.46" IsReadOnly="True" local:HtmlRichTextBoxBehavior.Text="{Binding ElementName=html_stream, Path=Text}" />
+                        <Label Content="과제" HorizontalAlignment="Left" Margin="39,20,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="20" Height="37" Width="50"/>
+                        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Margin="0,-1,-1,-1"/>
+                        <TextBox x:Name="html_stream" HorizontalAlignment="Left" Height="90" Margin="5,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Text="Loading" Visibility="Hidden"/>
+                    </Grid>
                 </Border>
             </Grid>
         </Grid>
