@@ -44,3 +44,5 @@ C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\HelloWorld.g.cs
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\HelloWorld.baml
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\Newtonsoft.Json.dll
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\Newtonsoft.Json.xml
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\About.g.cs
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\About.baml

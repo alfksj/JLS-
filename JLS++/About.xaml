@@ -1,0 +1,15 @@
+﻿<Window x:Class="JLS__.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JLS__"
+        mc:Ignorable="d"
+        Title="About" Height="348.215" Width="565.625" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+    <Grid>
+        <Label Content="JLS++" Margin="10,0" VerticalAlignment="Top" FontFamily="SpoqaHanSans" FontSize="30" FontWeight="Bold"/>
+        <RichTextBox Margin="10,59,10,10" local:HtmlRichTextBoxBehavior.Text="{Binding ElementName=htmlRoot, Path=Text}" />
+        <TextBox x:Name="htmlRoot" HorizontalAlignment="Left" Height="250" Margin="-240,59,0,0" TextWrapping="Wrap" Text="&lt;font size=&quot;3px&quot;&gt;&#xD;&#xA;&lt;/font&gt;" VerticalAlignment="Top" Width="224"/>
+
+    </Grid>
+</Window>

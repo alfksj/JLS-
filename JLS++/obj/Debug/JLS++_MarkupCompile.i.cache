@@ -1,7 +1,7 @@
 ﻿JLS++
 
 
-exe
+winexe
 C#
 .cs
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\
@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\App.xaml
-31496560742
+4885635612
 
-101597463877
+11-1417319789
 201484237402
-HelloWorld.xaml;last.xaml;MainWindow.xaml;
+About.xaml;HelloWorld.xaml;last.xaml;MainWindow.xaml;
 
 True
 

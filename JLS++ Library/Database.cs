@@ -17,7 +17,6 @@ namespace JLS___Library.Data
         {
             if (!File.Exists(DB_ROOT) || !File.Exists(HISTORY_ROOT))
             {
-                //TODO: 새로 생성한 후 어디선가 con.close()가 안됨
                 Directory.CreateDirectory(Environment.GetEnvironmentVariable("appdata") + "/.JLS++");
                 DirectoryInfo rootDir = new DirectoryInfo(Environment.GetEnvironmentVariable("appdata") + "/.JLS++");
                 if ((rootDir.Attributes & FileAttributes.Hidden) != FileAttributes.Hidden)
@@ -31,7 +30,9 @@ namespace JLS___Library.Data
                 mkTable("profile", "key INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                     "name TEXT," +
                     "id TEXT," +
-                    "password TEXT");
+                    "password TEXT," +
+                    "usCache BOOL," +
+                    "callCache BOOL");
                 mkTable("browser", "key INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                     "usr_agent TEXT," +
                     "fake_plugin BOOL," +
@@ -47,6 +48,7 @@ namespace JLS___Library.Data
                 File.WriteAllText(System.Environment.GetEnvironmentVariable("appdata") + "/.JLS++/setting.json", "{\n" +
                     "\"rather_cache\":true,\n" +
                     "\"loadWhenStart\":true\n" +
+
                     "}");
             }
             else
@@ -54,6 +56,8 @@ namespace JLS___Library.Data
                 con = new SQLiteConnection("Data Source = " + DB_ROOT + "; Version = 3;");
                 hw = new SQLiteConnection("Data Source = " + HISTORY_ROOT + "; Version=3;");
             }
+            con.Close();
+            hw.Close();
         }
         /// <summary>
         /// SQLite에서 NonQuery 명령을 실행합니다.
@@ -63,6 +67,7 @@ namespace JLS___Library.Data
         /// <returns>실행 결과를 반환합니다.</returns>
         private int exeCommand(string command)
         {
+            // TODO: 어디선가 열곤 안닫음(처음 DB생성 부분)
             con.Open();
             SQLiteCommand cmd = new SQLiteCommand(command, con);
             int returm = cmd.ExecuteNonQuery();
@@ -138,6 +143,7 @@ namespace JLS___Library.Data
             {
                 Secure.setProfile(dat["name"].ToString(), dat["id"].ToString(), dat["password"].ToString());
             }
+            Setting.load();
             dat.Close();
             cmds = "select * from browser";
             cmd = new SQLiteCommand(cmds, con);
@@ -170,6 +176,7 @@ namespace JLS___Library.Data
                     exeCommandWithoutOpen("update profile set name=\'" + prof.Name + "\', id=\'" + prof.Id + "\', password=\'" + prof.Pwd + "\' where key=1");
                     flag = false;
                 }
+                Setting.save();
                 read.Close();
                 con.Close();
                 if (flag)
@@ -248,11 +255,16 @@ namespace JLS___Library.Data
         /// </summary>
         public void suicide()
         {
-            File.Delete(DB_ROOT);
+            exeCommand("delete from profile");
+            exeCommand("delete from browser");
+            exeCommand("insert into browser (usr_agent, fake_plugin, use_window, gpu_acc, lang) values " +
+                    "(\'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/60.0.3112.50 Safari/537.36\'," +
+                    "false, false, true, \'ko-KR\')");
+            suicideOfHw();
         }
         public void suicideOfHw()
         {
-            File.Delete(HISTORY_ROOT);
+            exeCommandOfHw("delete from hw");
         }
     }
 }

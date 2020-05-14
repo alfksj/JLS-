@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,7 +23,8 @@ namespace JLS__
             string[] args = Environment.GetCommandLineArgs();
             if(args.Length>1) //첫번째 인수는 프로세스 시작 위치니까 믿고 거른다.
             {
-                char[] ss = args[1].ToCharArray();
+                string q = args[1] + "\n";
+                char[] ss = q.ToCharArray();
                 string[] sq = new string[1024];
                 int par = 0, start = 0, len = 0, abs = 0;
                 foreach(char pae in ss)
@@ -31,7 +33,7 @@ namespace JLS__
                     {
                         start = abs;
                     }
-                    else if(pae==',')
+                    else if(pae==',' || pae=='\n')
                     {
                         sq[par] = args[1].Substring(start, len);
                         par++;
@@ -48,8 +50,11 @@ namespace JLS__
                         debug.makeLog("Reset Data Reqested");
                         db.suicide();
                         db.suicideOfHw();
-                        db = null;
-                        db = new Database();
+                    }
+                    if (cmd.Equals("-RESET_CACHE"))
+                    {
+                        debug.makeLog("Reset Cache Data Reqested");
+                        db.suicideOfHw();
                     }
                     else if (cmd.Equals("-debug"))
                     {
@@ -81,14 +86,15 @@ namespace JLS__
                 await time.Dispatcher.InvokeAsync(() =>
                 {
                     if(hw.Equals("<font size=\"4\" color=\"red\"><b>로그인할 수 없습니다.</b><br />ID와 비밀번호가 정확한지 확인해 주세요.<br />서버 지연이 너무 심하면 이런 오류가 뜰 수 도 있습니다.</font>") ||
-                    hw.Equals("<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />인터넷문제이거나 JLS서버를 일시적으로 이용할 수 없는 듯 합니다.</font>") ||
+                    hw.Equals("<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>") ||
+                    hw.Equals("NOT LOAD") ||
                     Setting.LoadDatAtSet) {
                         html_stream.Text = hw;
                     }
                 });
             });
             string cach = db.getLatestHw();
-            if(!cach.Equals("no data") && Setting.LoadCache)
+            if(!cach.Equals("NO CACHE DATA FOUND") && Setting.LoadCache)
             {
                 debug.makeLog("Use cache date first");
                 html_stream.Text = cach;
@@ -132,13 +138,16 @@ namespace JLS__
                 WebControl.use_win = (bool)showWin.IsChecked;
                 WebControl.gpu_acc = (bool)gpuac.IsChecked;
                 WebControl.fake_plugin = (bool)fake_plugin.IsChecked;
-                db.saveAll(new Profile(setName.Text, setID.Text, setPwd.Password));
+                Setting.LoadCache = (bool)ratc.IsChecked;
+                Setting.LoadDatAtSet = (bool)getAtSt.IsChecked;
+                db.saveAll(new Profile(setName.Text, setID.Text, setPwd.Password));                
                 db.loadAll();
                 UpdateWindow();
                 Whatsetting.Content = "JLS++에 온걸 환영합니다!";
                 greeting_setting.Visibility = Visibility.Visible;
                 profileset.Visibility = Visibility.Hidden;
                 browserset.Visibility = Visibility.Hidden;
+                crawl_set.Visibility = Visibility.Hidden;
                 r2.Visibility = Visibility.Visible;
             }
         }
@@ -204,16 +213,30 @@ namespace JLS__
             string s;
             if (!date.Text.Equals(""))
             {
-                s = db.getHw(Int32.Parse(date.Text));
-                if(s.Equals("NO CACHE DATA FOUND"))
+                if(Setting.LoadCache)
+                {
+                    s = db.getHw(Int32.Parse(date.Text));
+                    if (s.Equals("NO CACHE DATA FOUND"))
+                    {
+                        s = web.justGet(Int32.Parse(date.Text));
+                    }
+                }
+                else
                 {
                     s = web.justGet(Int32.Parse(date.Text));
                 }
             }
             else
             {
-                s = db.getLatestHw();
-                if (s.Equals("NO CACHE DATA FOUND"))
+                if(Setting.LoadCache)
+                {
+                    s = db.getLatestHw();
+                    if (s.Equals("NO CACHE DATA FOUND"))
+                    {
+                        s = web.justGet();
+                    }
+                }
+                else
                 {
                     s = web.justGet();
                 }
@@ -223,7 +246,9 @@ namespace JLS__
 
         private void del_cache_Click(object sender, RoutedEventArgs e)
         {
-            db.suicideOfHw();
+            last lts = new last("", "-RESET_CACHE");
+            Close();
+            lts.Show();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -235,6 +260,15 @@ namespace JLS__
             web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang, db);
             hwreg.IsEnabled = true;
             setting.IsEnabled = true;
+        }
+        public void coffin(object sender, CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        public void aboutp(object senderm, RoutedEventArgs e)
+        {
+            About a = new About("");
+            a.Show();
         }
     }
 }

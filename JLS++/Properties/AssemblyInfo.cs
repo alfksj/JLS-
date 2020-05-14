@@ -8,11 +8,11 @@ using System.Windows;
 // 제어됩니다. 어셈블리와 관련된 정보를 수정하려면
 // 이러한 특성 값을 변경하세요.
 [assembly: AssemblyTitle("JLS++")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("정상어학원의 숙제를 자동으로 받아와서 보여주는 프로그램입니다.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Hyunc")]
 [assembly: AssemblyProduct("JLS++")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("COPYRIGHT  2020 HYUNC ALL RIGHTS RESERVED")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

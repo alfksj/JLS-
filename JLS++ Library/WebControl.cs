@@ -79,42 +79,86 @@ namespace JLS___Library
                 debug.makeLog("Getting rid of garbage alert");
                 var ok = driver.FindElementByClassName("swal2-confirm");
                 ok.Click();
+                if (!Setting.LoadDatAtSet)
+                {
+                    debug.makeLog("No update data");
+                    return "No Data Load When Program Initialize";
+                }
                 //최신 숙제 받아오기
                 return justGet();
             }
             catch(Exception e)
             {
                 debug.makeLog("Exception: " + e.Message);
-                return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />인터넷문제이거나 JLS서버를 일시적으로 이용할 수 없는 듯 합니다.</font>";
+                return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
             }
         }
         public string justGet()
         {
-            debug.makeLog("Getting homework");
-            var ne = driver.FindElementByClassName("new");
-            string cmdTo = ne.GetAttribute("id");
-            string cmdToExe = "studyDate(\'" + cmdTo.Substring(4, 8) + "\')";
-            IJavaScriptExecutor executor = driver as IJavaScriptExecutor;
-            executor.ExecuteScript(cmdToExe);
-            var hwPane = driver.FindElementByClassName("oldarea");
-            string real = hwPane.GetAttribute("innerHTML");
-            debug.makeLog("Saving to DB");
-            sav.addHw(Int32.Parse(cmdTo.Substring(4, 8)), real);
-            debug.makeLog("All set!");
-            return real;
+            try {
+                debug.makeLog("Getting homework");
+                var ne = driver.FindElementByClassName("new");
+                string cmdTo = ne.GetAttribute("id");
+                string cmdToExe = "studyDate(\'" + cmdTo.Substring(4, 8) + "\')";
+                IJavaScriptExecutor executor = driver as IJavaScriptExecutor;
+                executor.ExecuteScript(cmdToExe);
+                var tst = driver.FindElementById("day_" + cmdTo.Substring(4, 8));
+                if(!tst.GetAttribute("class").Contains("on"))
+                {
+                    return "<font size=\"4\"><b>지정한 날짜에 과제가 없습니다.</b><br /> 날짜를 확인하세요</font>";
+                }
+                var hwPane = driver.FindElementByClassName("oldarea");
+                string real = hwPane.GetAttribute("innerHTML");
+                debug.makeLog("Saving to DB");
+                sav.addHw(Int32.Parse(cmdTo.Substring(4, 8)), real);
+                debug.makeLog("All set!");
+                return real;
+            }
+            catch (Exception e)
+            {
+                debug.makeLog(e.Message);
+                if (e.Message.Equals("javascript error: studyDate is not defined"))
+                {
+                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />해당 날짜에 대한 과제를 찾을 수 없습니다.</font>";
+                }
+                else
+                {
+                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
+                }
+            }
         }
         public string justGet(int date)
         {
-            debug.makeLog("Getting homework of "+date);
-            string cmdToExe = "studyDate(\'" + date + "\')";
-            IJavaScriptExecutor executor = driver as IJavaScriptExecutor;
-            executor.ExecuteScript(cmdToExe);
-            var hwPane = driver.FindElementByClassName("oldarea");
-            string real = hwPane.GetAttribute("innerHTML");
-            debug.makeLog("Saving to DB");
-            sav.addHw(date, real);
-            debug.makeLog("All set!");
-            return real;
+            try
+            {
+                debug.makeLog("Getting homework of " + date);
+                string cmdToExe = "studyDate(\'" + date + "\')";
+                IJavaScriptExecutor executor = driver as IJavaScriptExecutor;
+                executor.ExecuteScript(cmdToExe);
+                var tst = driver.FindElementById("day_" + date);
+                if (!tst.GetAttribute("class").Contains("on"))
+                {
+                    return "<font size=\"4\"><b>지정한 날짜에 과제가 없습니다.</b><br /> 날짜를 확인하세요</font>";
+                }
+                var hwPane = driver.FindElementByClassName("oldarea");
+                string real = hwPane.GetAttribute("innerHTML");
+                debug.makeLog("Saving to DB");
+                sav.addHw(date, real);
+                debug.makeLog("All set!");
+                return real;
+            }
+            catch(Exception e)
+            {
+                debug.makeLog(e.Message);
+                if (e.Message.Equals("javascript error: studyDate is not defined"))
+                {
+                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />해당 날짜에 대한 과제를 찾을 수 없습니다.</font>";
+                }
+                else
+                {
+                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
+                }
+            }
         }
         public void close()
         {
