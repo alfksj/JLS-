@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:JLS__"
         mc:Ignorable="d"
         Closing="coffin"
-        Title="JLS++" Height="600" Width="1000">
+        Title="JLS++" Height="600" Width="1000" Icon="icon.png">
     <Border x:Name="headline" BorderBrush="Black" BorderThickness="2" Height="80" VerticalAlignment="Top">
         <Grid x:Name="head">
             <Grid.ColumnDefinitions>

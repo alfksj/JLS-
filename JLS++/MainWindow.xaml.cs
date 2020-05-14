@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -267,7 +268,7 @@ namespace JLS__
         }
         public void aboutp(object senderm, RoutedEventArgs e)
         {
-            About a = new About("");
+            About a = new About();
             a.Show();
         }
     }

@@ -8,8 +8,8 @@
         Title="About" Height="348.215" Width="565.625" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
     <Grid>
         <Label Content="JLS++" Margin="10,0" VerticalAlignment="Top" FontFamily="SpoqaHanSans" FontSize="30" FontWeight="Bold"/>
-        <RichTextBox Margin="10,59,10,10" local:HtmlRichTextBoxBehavior.Text="{Binding ElementName=htmlRoot, Path=Text}" />
-        <TextBox x:Name="htmlRoot" HorizontalAlignment="Left" Height="250" Margin="-240,59,0,0" TextWrapping="Wrap" Text="&lt;font size=&quot;3px&quot;&gt;&#xD;&#xA;&lt;/font&gt;" VerticalAlignment="Top" Width="224"/>
+        <RichTextBox Margin="10,59,10,10" local:HtmlRichTextBoxBehavior.Text="{Binding ElementName=html, Path=Text}" />
+        <TextBox x:Name="html" HorizontalAlignment="Left" Height="23" Margin="-174,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

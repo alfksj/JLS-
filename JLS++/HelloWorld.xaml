@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="JLS++" Height="230" Width="400" Topmost="True" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <Image Source="C:/Users/hyunc/source/repos/alfksj/JLS++/JLS++/asset/logo.png"/>
+        <Image Source="logo.png"/>
 
     </Grid>
 </Window>
