@@ -112,6 +112,7 @@ namespace JLS___Library
                 debug.makeLog("Saving to DB");
                 sav.addHw(Int32.Parse(cmdTo.Substring(4, 8)), real);
                 debug.makeLog("All set!");
+                currentDate = cmdTo.Substring(4, 8);
                 return real;
             }
             catch (Exception e)
@@ -145,6 +146,7 @@ namespace JLS___Library
                 debug.makeLog("Saving to DB");
                 sav.addHw(date, real);
                 debug.makeLog("All set!");
+                currentDate = date.ToString();
                 return real;
             }
             catch(Exception e)
@@ -158,6 +160,19 @@ namespace JLS___Library
                 {
                     return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
                 }
+            }
+        }
+        public string CurrentDate;
+        public string currentDate
+        {
+            get
+            {
+                return CurrentDate;
+            }
+            set
+            {
+                string yyyy = value.Substring(0, 4), mm = value.Substring(4, 2), dd = value.Substring(6, 2);
+                CurrentDate = "이 과제는 " + yyyy + "년 " + mm + "월 " + dd + "일의 과제입니다.";
             }
         }
         public void close()

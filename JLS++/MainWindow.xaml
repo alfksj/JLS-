@@ -97,8 +97,10 @@
                         <Border BorderBrush="Black" BorderThickness="1" Grid.Column="3" Margin="0,-1,-1,-1"/>
                         <TextBox x:Name="html_stream" HorizontalAlignment="Left" Height="90" Margin="5,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Text="Loading" Visibility="Hidden"/>
                         <Button x:Name="hwreg" Content="과제 새로고침" Margin="5,0,10,10" Height="22" VerticalAlignment="Bottom" Click="Button_Click_1" Grid.Column="1" FontFamily="Malgun Gothic"/>
-                        <TextBox x:Name="date" Height="22" Margin="39,0,5,10" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="date" Height="22" Margin="76,0,5,10" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
                         <Button Content="재접속" Margin="10,0,30,10" Grid.Column="2" FontFamily="Malgun Gothic" Height="22" VerticalAlignment="Bottom" Click="Button_Click_2"/>
+                        <Label Content="날짜:" HorizontalAlignment="Left" Margin="39,453,0,0" VerticalAlignment="Top" Width="37"/>
+                        <Label x:Name="thisis" Content="과제를 불러오지 않았습니다." Margin="180,27,30,0" VerticalAlignment="Top" Grid.ColumnSpan="3" FontFamily="Malgun Gothic" FontSize="15"/>
                     </Grid>
                 </Border>
             </Grid>

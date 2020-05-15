@@ -80,9 +80,9 @@ namespace JLS__
                     Thread.Sleep(1000);
                 }
             });
-            web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang, db);
             Task.Run(async () =>//시작할때 눈치껏 브라우저 초기화 & 접속 & 숙제 로드
             {
+                web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang, db);
                 string hw = web.load();
                 await time.Dispatcher.InvokeAsync(() =>
                 {
@@ -91,6 +91,7 @@ namespace JLS__
                     hw.Equals("NOT LOAD") ||
                     Setting.LoadDatAtSet) {
                         html_stream.Text = hw;
+                        thisis.Content = web.currentDate;
                     }
                 });
             });
@@ -99,6 +100,7 @@ namespace JLS__
             {
                 debug.makeLog("Use cache date first");
                 html_stream.Text = cach;
+                thisis.Content = db.currentDate;
             }
             hwx.Hide();
         }
@@ -149,6 +151,7 @@ namespace JLS__
                 profileset.Visibility = Visibility.Hidden;
                 browserset.Visibility = Visibility.Hidden;
                 crawl_set.Visibility = Visibility.Hidden;
+                fileset.Visibility = Visibility.Hidden;
                 r2.Visibility = Visibility.Visible;
             }
         }
@@ -217,14 +220,17 @@ namespace JLS__
                 if(Setting.LoadCache)
                 {
                     s = db.getHw(Int32.Parse(date.Text));
+                    thisis.Content = db.currentDate;
                     if (s.Equals("NO CACHE DATA FOUND"))
                     {
                         s = web.justGet(Int32.Parse(date.Text));
+                        thisis.Content = web.currentDate;
                     }
                 }
                 else
                 {
                     s = web.justGet(Int32.Parse(date.Text));
+                    thisis.Content = web.currentDate;
                 }
             }
             else
@@ -232,14 +238,17 @@ namespace JLS__
                 if(Setting.LoadCache)
                 {
                     s = db.getLatestHw();
+                    thisis.Content = db.currentDate;
                     if (s.Equals("NO CACHE DATA FOUND"))
                     {
                         s = web.justGet();
+                        thisis.Content = web.currentDate;
                     }
                 }
                 else
                 {
                     s = web.justGet();
+                    thisis.Content = web.currentDate;
                 }
             }
             html_stream.Text = s;

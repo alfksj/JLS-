@@ -31,3 +31,4 @@ C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Release\JLS++.exe
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Release\JLS++.pdb
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Release\About.g.cs
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Release\About.baml
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Release\JLS++_Content.g.cs

@@ -215,6 +215,7 @@ namespace JLS___Library.Data
             string cmds = "select * from hw";
             SQLiteCommand cmd = new SQLiteCommand(cmds, hw);
             SQLiteDataReader read = cmd.ExecuteReader();
+            currentDate = date.ToString();
             while (read.Read())
             {
                 if((Int64)read["key"] == date)
@@ -236,19 +237,34 @@ namespace JLS___Library.Data
             string cmds = "select * from hw";
             SQLiteCommand cmd = new SQLiteCommand(cmds, hw);
             SQLiteDataReader readx = cmd.ExecuteReader();
-            int DateOfLast = 0;
+            long DateOfLast = 0;
             string ContentOfLast = "NO CACHE DATA FOUND";
             while (readx.Read())
             {
                 if((Int64)readx["key"] > DateOfLast)
                 {
                     ContentOfLast = readx["content"].ToString();
+                    DateOfLast = (Int64)readx["key"];
                 }
             }
+            currentDate = DateOfLast.ToString();
             readx.Close();
             hw.Close();
             debug.makeLog("Cache returned");
             return ContentOfLast;
+        }
+        public string CurrentDate;
+        public string currentDate
+        {
+            get
+            {
+                return CurrentDate;
+            }
+            set
+            {
+                string yyyy = value.Substring(0, 4), mm = value.Substring(4, 2), dd = value.Substring(6, 2);
+                CurrentDate = "이 과제는 " + yyyy + "년 " + mm + "월 " + dd + "일의 과제입니다.";
+            }
         }
         /// <summary>
         /// db를 완전히 지웁니다.
