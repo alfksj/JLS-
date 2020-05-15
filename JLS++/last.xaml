@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="JLS Backstage" Height="500" Width="1000" ResizeMode="NoResize" Icon="icon.png">
     <Grid>
-        <Label Content="JLS++ 백스테이지" Margin="247,102,247,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="60"/>
-        <Label Content="다음과 같은 이유로 JLS++를 재시작합니다." Margin="200,197,200,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="30"/>
-        <Label x:Name="code_set" Content="Label" Margin="130,247,130,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="25" Height="141"/>
-        <Button Content="JLS++ 다시시작하기" Margin="272,0,272,34" VerticalAlignment="Bottom" FontFamily="Malgun Gothic" FontSize="30" Click="Button_Click"/>
+        <Label Content="JLS++ 백스테이지" Margin="247,102,247,0" VerticalAlignment="Top" FontFamily="SpoqaHanSans" FontSize="60"/>
+        <Label Content="다음과 같은 이유로 JLS++를 재시작합니다." Margin="200,197,200,0" VerticalAlignment="Top" FontFamily="SpoqaHanSans" FontSize="30"/>
+        <Label x:Name="code_set" Content="Label" Margin="130,247,130,0" VerticalAlignment="Top" FontFamily="SpoqaHanSans" FontSize="25" Height="141"/>
+        <Button Content="JLS++ 다시시작하기" Margin="272,0,272,34" VerticalAlignment="Bottom" FontFamily="SpoqaHanSans" FontSize="30" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -141,7 +141,7 @@ namespace JLS___Library.Data
             SQLiteDataReader dat = cmd.ExecuteReader();
             while (dat.Read())
             {
-                Secure.setProfile(dat["name"].ToString(), dat["id"].ToString(), dat["password"].ToString());
+                Secure.setProfile(dat["name"].ToString(), Secure.AES256Decrypt(dat["id"].ToString()), Secure.AES256Decrypt(dat["password"].ToString()));
             }
             Setting.load();
             dat.Close();
@@ -173,7 +173,8 @@ namespace JLS___Library.Data
                 SQLiteDataReader read = cmd.ExecuteReader();
                 while (read.Read())
                 {
-                    exeCommandWithoutOpen("update profile set name=\'" + prof.Name + "\', id=\'" + prof.Id + "\', password=\'" + prof.Pwd + "\' where key=1");
+                    exeCommandWithoutOpen("update profile set name=\'" + prof.Name + "\', id=\'" + Secure.AES256Encrypt(prof.Id)
+                        + "\', password=\'" + Secure.AES256Encrypt(prof.Pwd) + "\' where key=1");
                     flag = false;
                 }
                 Setting.save();
@@ -181,7 +182,8 @@ namespace JLS___Library.Data
                 con.Close();
                 if (flag)
                 {
-                    exeCommand("insert into profile (name, id, password) values (\'" + prof.Name + "\', \'" + prof.Id + "\', \'" + prof.Pwd + "\')");
+                    exeCommand("insert into profile (name, id, password) values (\'" + prof.Name + "\', \'" + Secure.AES256Encrypt(prof.Id)
+                        + "\', \'" + Secure.AES256Encrypt(prof.Pwd) + "\')");
                 }
             }
             exeCommand("update browser set usr_agent=\'" + WebControl.usr_agent + "\', fake_plugin=" + WebControl.fake_plugin
@@ -237,7 +239,7 @@ namespace JLS___Library.Data
             string cmds = "select * from hw";
             SQLiteCommand cmd = new SQLiteCommand(cmds, hw);
             SQLiteDataReader readx = cmd.ExecuteReader();
-            long DateOfLast = 0;
+            long DateOfLast = 10000000;
             string ContentOfLast = "NO CACHE DATA FOUND";
             while (readx.Read())
             {

@@ -1,7 +1,7 @@
 ﻿JLS++
 
 
-winexe
+exe
 C#
 .cs
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Release\
@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\App.xaml
-4885635612
+51940868230
 11783100487
-11-1417319789
+12-1425874527
 20-187474615
-About.xaml;HelloWorld.xaml;last.xaml;MainWindow.xaml;
+About.xaml;HelloWorld.xaml;last.xaml;MainWindow.xaml;secure.xaml;
 
 True
 

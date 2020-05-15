@@ -10,6 +10,7 @@
         <Label Content="JLS++" Margin="10,0" VerticalAlignment="Top" FontFamily="SpoqaHanSans" FontSize="30" FontWeight="Bold"/>
         <RichTextBox Margin="10,59,10,10" local:HtmlRichTextBoxBehavior.Text="{Binding ElementName=html, Path=Text}" />
         <TextBox x:Name="html" HorizontalAlignment="Left" Height="23" Margin="-174,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <WebBrowser HorizontalAlignment="Left" Height="250" Margin="10,59,0,0" VerticalAlignment="Top" Width="540" Source="http://jls.r-e.kr"/>
 
     </Grid>
 </Window>

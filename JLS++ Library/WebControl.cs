@@ -19,6 +19,7 @@ namespace JLS___Library
         public ChromeDriverService driverSvc;
         public ChromeOptions options;
         public ChromeDriver driver;
+        private bool loaded = false;
         public WebControl(string agent, bool gpu, bool fake, bool use_win, string lang, Database sav)
         {
             debug.makeLog("Headless Browser Initializing");
@@ -52,44 +53,96 @@ namespace JLS___Library
         {
             try
             {
-                debug.makeLog("Loading Howework");
-                if (Secure.Propile == null)
+                if (!loaded)
                 {
-                    debug.makeLog("Failure: No login data found");
-                    return "<font size=\"4\" color=\"red\"><b>프로필이 설정되어 있지 않습니다.</b><br />프로필을 설정해주세요.</font>";
+                    debug.makeLog("Loading Howework");
+                    if (Secure.Propile == null)
+                    {
+                        debug.makeLog("Failure: No login data found");
+                        return "<font size=\"4\" color=\"red\"><b>프로필이 설정되어 있지 않습니다.</b><br />프로필을 설정해주세요.</font>";
+                    }
+                    debug.makeLog("Navigating to target URL");
+                    driver.Navigate().GoToUrl("https://www.gojls.com/branch/myjls/homework");
+                    debug.makeLog("Finding elements");
+                    var id = driver.FindElementById("userId");
+                    var pwd = driver.FindElementById("passWd");
+                    var go = driver.FindElementByClassName("log");
+                    debug.makeLog("Sending keys");
+                    id.SendKeys(Secure.Propile.Id);
+                    pwd.SendKeys(Secure.Propile.Pwd);
+                    go.Click();
+                    debug.makeLog("Logged in");
+                    debug.makeLog("Checking status");
+                    Thread.Sleep(1000);
+                    if (driver.Url.Equals("https://www.gojls.com/login?preURL=/branch/myjls/homework"))
+                    {
+                        debug.makeLog("Login failure");
+                        return "<font size=\"4\" color=\"red\"><b>로그인할 수 없습니다.</b><br />ID와 비밀번호가 정확한지 확인해 주세요.<br />서버 지연이 너무 심하면 이런 오류가 뜰 수 도 있습니다.</font>";
+                    }
+                    debug.makeLog("Getting rid of garbage alert");
+                    var ok = driver.FindElementByClassName("swal2-confirm");
+                    ok.Click();
+                    if (!Setting.LoadDatAtSet)
+                    {
+                        debug.makeLog("No update data");
+                        return "No Data Load When Program Initialize";
+                    }
                 }
-                debug.makeLog("Navigating to target URL");
-                driver.Navigate().GoToUrl("https://www.gojls.com/branch/myjls/homework");
-                debug.makeLog("Finding elements");
-                var id = driver.FindElementById("userId");
-                var pwd = driver.FindElementById("passWd");
-                var go = driver.FindElementByClassName("log");
-                debug.makeLog("Sending keys");
-                id.SendKeys(Secure.Propile.Id);
-                pwd.SendKeys(Secure.Propile.Pwd);
-                go.Click();
-                debug.makeLog("Logged in");
-                debug.makeLog("Checking status");
-                Thread.Sleep(1000);
-                if (driver.Url.Equals("https://www.gojls.com/login?preURL=/branch/myjls/homework"))
-                {
-                    debug.makeLog("Login failure");
-                    return "<font size=\"4\" color=\"red\"><b>로그인할 수 없습니다.</b><br />ID와 비밀번호가 정확한지 확인해 주세요.<br />서버 지연이 너무 심하면 이런 오류가 뜰 수 도 있습니다.</font>";
-                }
-                debug.makeLog("Getting rid of garbage alert");
-                var ok = driver.FindElementByClassName("swal2-confirm");
-                ok.Click();
-                if (!Setting.LoadDatAtSet)
-                {
-                    debug.makeLog("No update data");
-                    return "No Data Load When Program Initialize";
-                }
+                loaded = true;
                 //최신 숙제 받아오기
                 return justGet();
             }
             catch(Exception e)
             {
-                debug.makeLog("Exception: " + e.Message);
+                debug.makeLog("Exception: " + e.Message + "\n" + e.StackTrace);
+                return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
+            }
+        }
+        public string load(int date)
+        {
+            try
+            {
+                debug.makeLog("Loading Howework");
+                if(!loaded)
+                {
+                    if (Secure.Propile == null)
+                    {
+                        debug.makeLog("Failure: No login data found");
+                        return "<font size=\"4\" color=\"red\"><b>프로필이 설정되어 있지 않습니다.</b><br />프로필을 설정해주세요.</font>";
+                    }
+                    debug.makeLog("Navigating to target URL");
+                    driver.Navigate().GoToUrl("https://www.gojls.com/branch/myjls/homework");
+                    debug.makeLog("Finding elements");
+                    var id = driver.FindElementById("userId");
+                    var pwd = driver.FindElementById("passWd");
+                    var go = driver.FindElementByClassName("log");
+                    debug.makeLog("Sending keys");
+                    id.SendKeys(Secure.Propile.Id);
+                    pwd.SendKeys(Secure.Propile.Pwd);
+                    go.Click();
+                    debug.makeLog("Logged in");
+                    debug.makeLog("Checking status");
+                    Thread.Sleep(1000);
+                    if (driver.Url.Equals("https://www.gojls.com/login?preURL=/branch/myjls/homework"))
+                    {
+                        debug.makeLog("Login failure");
+                        return "<font size=\"4\" color=\"red\"><b>로그인할 수 없습니다.</b><br />ID와 비밀번호가 정확한지 확인해 주세요.<br />서버 지연이 너무 심하면 이런 오류가 뜰 수 도 있습니다.</font>";
+                    }
+                    debug.makeLog("Getting rid of garbage alert");
+                    var ok = driver.FindElementByClassName("swal2-confirm");
+                    ok.Click();
+                    if (!Setting.LoadDatAtSet)
+                    {
+                        debug.makeLog("No update data");
+                        return "No Data Load When Program Initialize";
+                    }
+                }
+                loaded = true;
+                return justGet(date);
+            }
+            catch(Exception e)
+            {
+                debug.makeLog("Exception: " + e.Message + "\n" + e.StackTrace);
                 return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
             }
         }
@@ -124,6 +177,7 @@ namespace JLS___Library
                 }
                 else
                 {
+                    debug.makeLog("Exception: " + e.Message + "\n" + e.StackTrace);
                     return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
                 }
             }

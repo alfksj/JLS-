@@ -223,13 +223,13 @@ namespace JLS__
                     thisis.Content = db.currentDate;
                     if (s.Equals("NO CACHE DATA FOUND"))
                     {
-                        s = web.justGet(Int32.Parse(date.Text));
+                        s = web.load(Int32.Parse(date.Text));
                         thisis.Content = web.currentDate;
                     }
                 }
                 else
                 {
-                    s = web.justGet(Int32.Parse(date.Text));
+                    s = web.load(Int32.Parse(date.Text));
                     thisis.Content = web.currentDate;
                 }
             }
