@@ -121,107 +121,105 @@
     <value>Browser Configuration</value>
   </data>
   <data name="browExplain" xml:space="preserve">
-    <value>These configurations use to web server to tend like your not using headless browser.
+    <value>These configuration make browser to pretend like you are not using headless browser.
 Please set if you need. Incorrect setting make program to run unexpectedly.</value>
   </data>
   <data name="browserSetting" xml:space="preserve">
     <value>Browser Setting</value>
   </data>
   <data name="cacheExplain" xml:space="preserve">
-    <value>이 설정을 켜면 프로그램 시작시 서버와 통신이 완료 되기 이전 캐시데이터를 우선적으로 표시합니다.
-과거 숙제의 경우 통신을 시도하기 전 캐시데이터를 확인하여 캐시데이터를 사용할 수 있는 경우 통신을 진행하지 않습니다.</value>
+    <value>This will enable cache data to show you the homework more quickly
+Web transfer will be not performed if cache data is available.</value>
   </data>
   <data name="cachePrio" xml:space="preserve">
-    <value>캐시 우선 사용하기 :</value>
+    <value>Give cache priority :</value>
   </data>
   <data name="cacheSetting" xml:space="preserve">
-    <value>캐시데이터 설정</value>
+    <value>Cache Data Setting</value>
   </data>
   <data name="crawlSetting" xml:space="preserve">
-    <value>크롤링 설정</value>
+    <value>Crawling Setting</value>
   </data>
   <data name="date" xml:space="preserve">
-    <value>날짜:</value>
+    <value>Date : </value>
   </data>
   <data name="dbExplain" xml:space="preserve">
-    <value>JLS++의 모든 정보는 데이터베이스로 관리됩니다.
-위의 설정으로 데이터베이스를 직접 관리할 수 있습니다.</value>
+    <value>All data which are handled by JLS++ are saved in database
+You can customize database setting here.</value>
   </data>
   <data name="dbSetting" xml:space="preserve">
-    <value>DATABASE 설정</value>
+    <value>Datebase Setting</value>
   </data>
   <data name="delCache" xml:space="preserve">
-    <value>캐시데이터 모두 지우기</value>
+    <value>Clear cache</value>
   </data>
   <data name="delCacheExplain" xml:space="preserve">
-    <value>과거 과제 내용을 포함하여 본 기기에 저장된 과제 데이터를 모두 지웁니다. 프로필은 초기화되지 않습니다.</value>
+    <value>Delete all cache data which contains past homework</value>
   </data>
   <data name="explain" xml:space="preserve">
-    <value>JLS++는 정상어학원의 숙제 확인의 귀찮음에 고통받는
-한 잼민이 프로그래머가 개발한 프로그램입니다.
-이 프로그램이 여러분의 과제 수행에 도움이 되었으면 합니다!</value>
+    <value>JLS++ will help you to check homework of JLS
+I hope this will be an assistance of study.</value>
   </data>
   <data name="fakeplugin" xml:space="preserve">
-    <value>가짜 플러그인 사용 : </value>
+    <value>Enable fake plugins : </value>
   </data>
   <data name="getOnStart" xml:space="preserve">
-    <value>프로그램이 시작할때 서버에서 데이터 받기 :</value>
+    <value>Get homework on web on start :</value>
   </data>
   <data name="gpu_acc" xml:space="preserve">
-    <value>GPU 가속 : </value>
+    <value>GPU acceleration : </value>
   </data>
   <data name="greeting" xml:space="preserve">
-    <value>JLS++에 온걸 환영합니다.</value>
+    <value>Welcome to JLS++</value>
   </data>
   <data name="hws" xml:space="preserve">
-    <value>과제</value>
+    <value>Homework</value>
   </data>
   <data name="id" xml:space="preserve">
     <value>ID : </value>
   </data>
   <data name="lang" xml:space="preserve">
-    <value>언어 : </value>
+    <value>Language : </value>
   </data>
   <data name="name" xml:space="preserve">
-    <value>이름 : </value>
+    <value>Name : </value>
   </data>
   <data name="profSetting" xml:space="preserve">
-    <value>프로필 설정</value>
+    <value>Profile Setting</value>
   </data>
   <data name="pwd" xml:space="preserve">
-    <value>비밀번호 : </value>
+    <value>Password : </value>
   </data>
   <data name="recon" xml:space="preserve">
-    <value>재접속</value>
+    <value>Reconnect</value>
   </data>
   <data name="refres" xml:space="preserve">
-    <value>과제 새로고침</value>
+    <value>Refresh</value>
   </data>
   <data name="reset" xml:space="preserve">
-    <value>설정 초기화</value>
+    <value>Reset All Setting</value>
   </data>
   <data name="savpath" xml:space="preserve">
-    <value>저장 경로 :</value>
+    <value>Saving Path : </value>
   </data>
   <data name="secExplain" xml:space="preserve">
-    <value>JLS++는 귀하의 개인정보를 소중하게 여깁니다.
-위와 같은 정보는 귀하의 기기에만 저장되며
-로그인시 JLS 서버 외에는 외부로 전송되지 않습니다.</value>
+    <value>JLS++ treats your privacy with care.
+All these privacies will be saved in device, and never send to other computer except for login.</value>
   </data>
   <data name="setProf" xml:space="preserve">
-    <value>프로필을 설정하세요.</value>
+    <value>Set Profile!</value>
   </data>
   <data name="setting" xml:space="preserve">
-    <value>설정</value>
+    <value>Setting</value>
   </data>
   <data name="shwWin" xml:space="preserve">
-    <value>창 보이기 : </value>
+    <value>Show window : </value>
   </data>
   <data name="storageSetting" xml:space="preserve">
-    <value>스토리지 설정</value>
+    <value>Storage Setting</value>
   </data>
   <data name="unlad" xml:space="preserve">
-    <value>과제를 불러오지 않았습니다.</value>
+    <value>Didn't loaded yet</value>
   </data>
   <data name="usr_agent" xml:space="preserve">
     <value>User Agent : </value>

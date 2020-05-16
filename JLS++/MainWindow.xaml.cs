@@ -75,11 +75,12 @@ namespace JLS__
             UpdateWindow();
             savePath.Text = System.Environment.GetEnvironmentVariable("appdata") + "\\.JLS++\\data.db";
             CultureInfo.CurrentCulture = new CultureInfo("en-US");
+            debug.makeLog("Current Culture="+CultureInfo.CurrentCulture.Name);
             Task.Run(async () =>//시간 새로고침
             {
                 while (true)
                 {
-                    string regen = DateTime.Now.ToString("yyyy/MM/dd  HH:mm:ss초");
+                    string regen = DateTime.Now.ToString("yyyy/MM/dd  HH:mm:ss");
                     await time.Dispatcher.InvokeAsync(() => time.Content = regen);
                     Thread.Sleep(1000);
                 }
