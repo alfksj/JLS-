@@ -5,6 +5,7 @@ using System.Collections;
 
 namespace JLS___Library.Data
 {
+    // TODO: 프로필 정보를 수정하고 저장하는 경우 PRIMARY KEY가 1씩 늘어남(???)
     public class Database
     {
         private string DB_ROOT = Environment.GetEnvironmentVariable("appdata") + "/.JLS++/data.db";
@@ -174,18 +175,17 @@ namespace JLS___Library.Data
                 while (read.Read())
                 {
                     exeCommandWithoutOpen("update profile set name=\'" + prof.Name + "\', id=\'" + Secure.AES256Encrypt(prof.Id)
-                        + "\', password=\'" + Secure.AES256Encrypt(prof.Pwd) + "\' where key=1");
+                        + "\', password=\'" + Secure.AES256Encrypt(prof.Pwd) + "\' where key="+read["key"]);
                     flag = false;
                 }
-                Setting.save();
                 read.Close();
-                con.Close();
                 if (flag)
                 {
-                    exeCommand("insert into profile (name, id, password) values (\'" + prof.Name + "\', \'" + Secure.AES256Encrypt(prof.Id)
+                    exeCommandWithoutOpen("insert into profile (name, id, password) values (\'" + prof.Name + "\', \'" + Secure.AES256Encrypt(prof.Id)
                         + "\', \'" + Secure.AES256Encrypt(prof.Pwd) + "\')");
                 }
             }
+            con.Close();
             exeCommand("update browser set usr_agent=\'" + WebControl.usr_agent + "\', fake_plugin=" + WebControl.fake_plugin
                 + ", use_window=" + WebControl.use_win + ", gpu_acc=" + WebControl.gpu_acc + ", lang=\'" + WebControl.lang
                 + "\' where key=1");

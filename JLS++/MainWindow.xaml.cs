@@ -1,11 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
-using System.IO;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Resources;
 using JLS___Library;
 using JLS___Library.Data;
+using System.Reflection;
+using System.Globalization;
 
 namespace JLS__
 {
@@ -71,11 +74,12 @@ namespace JLS__
             Setting.load();
             UpdateWindow();
             savePath.Text = System.Environment.GetEnvironmentVariable("appdata") + "\\.JLS++\\data.db";
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
             Task.Run(async () =>//시간 새로고침
             {
                 while (true)
                 {
-                    string regen = DateTime.Now.ToString("yyyy년 MM월 dd일  HH시 mm분 ss초");
+                    string regen = DateTime.Now.ToString("yyyy/MM/dd  HH:mm:ss초");
                     await time.Dispatcher.InvokeAsync(() => time.Content = regen);
                     Thread.Sleep(1000);
                 }
@@ -122,18 +126,20 @@ namespace JLS__
             ratc.IsChecked = Setting.LoadCache;
             getAtSt.IsChecked = Setting.LoadDatAtSet;
         }
-
         private void setting_Click(object sender, RoutedEventArgs e)
         {
-            if(settingPage.Visibility == Visibility.Hidden)
+            if (settingPage.Visibility == Visibility.Hidden)
             {
+                debug.makeLog("Open Setting");
                 db.loadAll();
                 UpdateWindow();
+                debug.makeLog("Security Clear");
                 r2.Visibility = Visibility.Hidden;
                 settingPage.Visibility = Visibility.Visible;
             }
             else
             {
+                debug.makeLog("Close");
                 settingPage.Visibility = Visibility.Hidden;
                 r2.Visibility = Visibility.Visible;
                 WebControl.lang = lang.Text;
@@ -143,8 +149,9 @@ namespace JLS__
                 WebControl.fake_plugin = (bool)fake_plugin.IsChecked;
                 Setting.LoadCache = (bool)ratc.IsChecked;
                 Setting.LoadDatAtSet = (bool)getAtSt.IsChecked;
-                db.saveAll(new Profile(setName.Text, setID.Text, setPwd.Password));                
+                db.saveAll(new Profile(setName.Text, setID.Text, setPwd.Password));
                 db.loadAll();
+                debug.makeLog("Security Clear");
                 UpdateWindow();
                 Whatsetting.Content = "JLS++에 온걸 환영합니다!";
                 greeting_setting.Visibility = Visibility.Visible;
@@ -208,7 +215,7 @@ namespace JLS__
             {
                 last show = new last("설정을 초기화하기 위해 프로그램을 다시 시작합니다.\nSQLite: Database Reset.", "-RESET_REQUEST,");
                 show.Show();
-                Close();
+                Visibility = Visibility.Hidden;
             }
         }
 
@@ -241,7 +248,7 @@ namespace JLS__
                     thisis.Content = db.currentDate;
                     if (s.Equals("NO CACHE DATA FOUND"))
                     {
-                        s = web.justGet();
+                        s = web.load();
                         thisis.Content = web.currentDate;
                     }
                 }
@@ -257,14 +264,14 @@ namespace JLS__
         private void del_cache_Click(object sender, RoutedEventArgs e)
         {
             last lts = new last("", "-RESET_CACHE");
-            Close();
             lts.Show();
+            Visibility = Visibility.Hidden;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             web.close();
-            //꼭 로딩중에 이상한거 눌러서 오류만드는 유저 대비용
+            //꼭 로딩중에 이상한거 눌러서 오류만드는 유저 대비용 근데 실효성 없음
             hwreg.IsEnabled = false;
             setting.IsEnabled = false;
             web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang, db);
@@ -279,6 +286,12 @@ namespace JLS__
         {
             About a = new About();
             a.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            // TODO: 일단은 Chrome에서 jls 사이트 열어줌. JS실행은 나중에 지원하자^^
+            Process.Start("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe", "https://www.gojls.com/branch/myjls/homework");
         }
     }
 }

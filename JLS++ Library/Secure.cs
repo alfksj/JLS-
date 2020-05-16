@@ -59,7 +59,7 @@ namespace JLS___Library.Data
             aes.Mode = CipherMode.CBC;
             aes.Padding = PaddingMode.PKCS7;
             var salt = new SHA256Managed().ComputeHash(Encoding.UTF8.GetBytes(key.Length.ToString()));
-            var PBKDF2Key = new Rfc2898DeriveBytes(key, salt, 50000);//50000번 돌리는 보일러
+            var PBKDF2Key = new Rfc2898DeriveBytes(key, salt, 25000);//25000번 돌리는 보일러
             var secretKey = PBKDF2Key.GetBytes(aes.KeySize / 8);
             var iv = PBKDF2Key.GetBytes(aes.BlockSize / 8);
             byte[] xBuff = null;
@@ -83,7 +83,7 @@ namespace JLS___Library.Data
             aes.Mode = CipherMode.CBC;
             aes.Padding = PaddingMode.PKCS7;
             var salt = new SHA256Managed().ComputeHash(Encoding.UTF8.GetBytes(key.Length.ToString()));
-            var PBKDF2Key = new Rfc2898DeriveBytes(key, salt, 50000);
+            var PBKDF2Key = new Rfc2898DeriveBytes(key, salt, 25000);
             var secretKey = PBKDF2Key.GetBytes(aes.KeySize / 8);
             var iv = PBKDF2Key.GetBytes(aes.BlockSize / 8);
             byte[] xBuff = null;

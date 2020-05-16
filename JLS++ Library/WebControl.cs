@@ -48,6 +48,7 @@ namespace JLS___Library
             debug.makeLog("Creating new chrome driver");
             driver = new ChromeDriver(driverSvc, options);
             debug.makeLog("Done");
+            loaded = false;
         }
         public string load()
         {
