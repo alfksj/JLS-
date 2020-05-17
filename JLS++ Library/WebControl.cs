@@ -60,7 +60,7 @@ namespace JLS___Library
                     if (Secure.Propile == null)
                     {
                         debug.makeLog("Failure: No login data found");
-                        return "<font size=\"4\" color=\"red\"><b>프로필이 설정되어 있지 않습니다.</b><br />프로필을 설정해주세요.</font>";
+                        return "failure:1";
                     }
                     debug.makeLog("Navigating to target URL");
                     driver.Navigate().GoToUrl("https://www.gojls.com/branch/myjls/homework");
@@ -78,7 +78,7 @@ namespace JLS___Library
                     if (driver.Url.Equals("https://www.gojls.com/login?preURL=/branch/myjls/homework"))
                     {
                         debug.makeLog("Login failure");
-                        return "<font size=\"4\" color=\"red\"><b>로그인할 수 없습니다.</b><br />ID와 비밀번호가 정확한지 확인해 주세요.<br />서버 지연이 너무 심하면 이런 오류가 뜰 수 도 있습니다.</font>";
+                        return "failure:2";
                     }
                     debug.makeLog("Getting rid of garbage alert");
                     var ok = driver.FindElementByClassName("swal2-confirm");
@@ -96,7 +96,7 @@ namespace JLS___Library
             catch(Exception e)
             {
                 debug.makeLog("Exception: " + e.Message + "\n" + e.StackTrace);
-                return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
+                return "failure:3";
             }
         }
         public string load(int date)
@@ -109,7 +109,7 @@ namespace JLS___Library
                     if (Secure.Propile == null)
                     {
                         debug.makeLog("Failure: No login data found");
-                        return "<font size=\"4\" color=\"red\"><b>프로필이 설정되어 있지 않습니다.</b><br />프로필을 설정해주세요.</font>";
+                        return "failure:1";
                     }
                     debug.makeLog("Navigating to target URL");
                     driver.Navigate().GoToUrl("https://www.gojls.com/branch/myjls/homework");
@@ -127,7 +127,7 @@ namespace JLS___Library
                     if (driver.Url.Equals("https://www.gojls.com/login?preURL=/branch/myjls/homework"))
                     {
                         debug.makeLog("Login failure");
-                        return "<font size=\"4\" color=\"red\"><b>로그인할 수 없습니다.</b><br />ID와 비밀번호가 정확한지 확인해 주세요.<br />서버 지연이 너무 심하면 이런 오류가 뜰 수 도 있습니다.</font>";
+                        return "failure:2";
                     }
                     debug.makeLog("Getting rid of garbage alert");
                     var ok = driver.FindElementByClassName("swal2-confirm");
@@ -144,7 +144,7 @@ namespace JLS___Library
             catch(Exception e)
             {
                 debug.makeLog("Exception: " + e.Message + "\n" + e.StackTrace);
-                return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
+                return "failure:3";
             }
         }
         public string justGet()
@@ -159,7 +159,7 @@ namespace JLS___Library
                 var tst = driver.FindElementById("day_" + cmdTo.Substring(4, 8));
                 if(!tst.GetAttribute("class").Contains("on"))
                 {
-                    return "<font size=\"4\"><b>지정한 날짜에 과제가 없습니다.</b><br /> 날짜를 확인하세요</font>";
+                    return "failure:4";
                 }
                 var hwPane = driver.FindElementByClassName("oldarea");
                 string real = hwPane.GetAttribute("innerHTML");
@@ -174,12 +174,12 @@ namespace JLS___Library
                 debug.makeLog(e.Message);
                 if (e.Message.Equals("javascript error: studyDate is not defined"))
                 {
-                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />해당 날짜에 대한 과제를 찾을 수 없습니다.</font>";
+                    return "failure:5";
                 }
                 else
                 {
                     debug.makeLog("Exception: " + e.Message + "\n" + e.StackTrace);
-                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
+                    return "failiure:3";
                 }
             }
         }
@@ -194,7 +194,7 @@ namespace JLS___Library
                 var tst = driver.FindElementById("day_" + date);
                 if (!tst.GetAttribute("class").Contains("on"))
                 {
-                    return "<font size=\"4\"><b>지정한 날짜에 과제가 없습니다.</b><br /> 날짜를 확인하세요</font>";
+                    return "failure:4";
                 }
                 var hwPane = driver.FindElementByClassName("oldarea");
                 string real = hwPane.GetAttribute("innerHTML");
@@ -209,11 +209,11 @@ namespace JLS___Library
                 debug.makeLog(e.Message);
                 if (e.Message.Equals("javascript error: studyDate is not defined"))
                 {
-                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />해당 날짜에 대한 과제를 찾을 수 없습니다.</font>";
+                    return "failure:5";
                 }
                 else
                 {
-                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
+                    return "failure:3";
                 }
             }
         }

@@ -47,7 +47,10 @@ C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\Newtonsoft.Json.xml
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\About.g.cs
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\About.baml
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS++_Content.g.cs
-C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS__.Properties.Localization.resources
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS__.Localization.resources
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\ko-KR\JLS++.resources.dll
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS__.Localization.ko-KR.resources
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\ko-KR\JLS++.resources.dll
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\bin\Debug\en-US\JLS++.resources.dll
-C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS__.Properties.Localization.en-US.resources
+C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\JLS__.Localization.en-US.resources
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++\obj\Debug\en-US\JLS++.resources.dll
