@@ -175,6 +175,9 @@ I hope this will be an assistance of study.</value>
   <data name="failure:5" xml:space="preserve">
     <value>&lt;font size="4" color="red"&gt;&lt;b&gt;No homework found&lt;/b&gt;&lt;br /&gt;Homework of that date is not available&lt;/font&gt;</value>
   </data>
+  <data name="fakenotavl" xml:space="preserve">
+    <value>Fake plugin is currently not available.</value>
+  </data>
   <data name="fakeplugin" xml:space="preserve">
     <value>Enable fake plugins : </value>
   </data>
@@ -195,6 +198,9 @@ I hope this will be an assistance of study.</value>
   </data>
   <data name="lang" xml:space="preserve">
     <value>Language : </value>
+  </data>
+  <data name="langExp" xml:space="preserve">
+    <value>This will be applied not only browser default language but also program language.</value>
   </data>
   <data name="name" xml:space="preserve">
     <value>Name : </value>

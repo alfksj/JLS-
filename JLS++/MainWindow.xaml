@@ -50,15 +50,16 @@
                         <Label Content="{x:Static local:Localization.browcfg}" Margin="10,10,40,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33"/>
                         <Label Content="{x:Static local:Localization.usr_agent}" HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="40" Width="174"/>
                         <Label Content="{x:Static local:Localization.lang}" HorizontalAlignment="Left" Margin="30,108,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
-                        <Label Content="{x:Static local:Localization.gpu_acc}" HorizontalAlignment="Left" Margin="30,141,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
-                        <Label Content="{x:Static local:Localization.shwWin}" HorizontalAlignment="Left" Margin="30,174,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
-                        <Label Content="{x:Static local:Localization.fakeplugin}" HorizontalAlignment="Left" Margin="30,207,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
-                        <Label Content="{x:Static local:Localization.browExplain}" Margin="10,245,10,0" Height="55" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14"/>
+                        <Label Content="{x:Static local:Localization.gpu_acc}" HorizontalAlignment="Left" Margin="30,172,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
+                        <Label Content="{x:Static local:Localization.shwWin}" HorizontalAlignment="Left" Margin="30,205,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
+                        <Label Content="{x:Static local:Localization.fakeplugin}" ToolTip="{x:Static local:Localization.fakenotavl}" HorizontalAlignment="Left" Margin="30,238,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
+                        <Label Content="{x:Static local:Localization.browExplain}" Margin="10,271,10,0" Height="55" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14"/>
                         <TextBox x:Name="usragent" Height="63" Margin="204,44,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="17"/>
                         <TextBox x:Name="lang" Height="28" Margin="204,112,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="17"/>
-                        <CheckBox x:Name="gpuac" Content="" HorizontalAlignment="Left" Margin="204,153,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
-                        <CheckBox x:Name="showWin" Content="" HorizontalAlignment="Left" Margin="204,186,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
-                        <CheckBox x:Name="fake_plugin" Content="" HorizontalAlignment="Left" Margin="204,219,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
+                        <CheckBox x:Name="gpuac" Content="" HorizontalAlignment="Left" Margin="204,183,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
+                        <CheckBox x:Name="showWin" Content="" HorizontalAlignment="Left" Margin="204,216,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
+                        <CheckBox x:Name="fake_plugin" Content="" ToolTip="{x:Static local:Localization.fakenotavl}" HorizontalAlignment="Left" Margin="204,249,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
+                        <Label Content="{x:Static local:Localization.langExp}" Margin="50,140,10,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14" Height="38"/>
                     </Grid>
                     <!--Storage Page-->
                     <Grid x:Name="fileset" Grid.Column="2" Height="431" Margin="10,57,2,0" VerticalAlignment="Top" Visibility="Hidden">
@@ -98,7 +99,7 @@
                             <ColumnDefinition Width="87*"/>
                             <ColumnDefinition Width="469*"/>
                         </Grid.ColumnDefinitions>
-                        <RichTextBox x:Name="homwork_region" Margin="39,57,30,37" RenderTransformOrigin="-0.55,0.46" IsReadOnly="True" local:HtmlRichTextBoxBehavior.Text="{Binding ElementName=html_stream, Path=Text}" Grid.ColumnSpan="4" FontFamily="Malgun Gothic" />
+                        <RichTextBox x:Name="homwork_region" Margin="39,57,30,37" RenderTransformOrigin="-0.55,0.46" IsReadOnly="True" local:HtmlRichTextBoxBehavior.Text="{Binding ElementName=html_stream, Path=Text}" Grid.ColumnSpan="4" FontFamily="Malgun Gothic" VerticalScrollBarVisibility="Auto" />
                         <Label Content="{x:Static local:Localization.hws}" HorizontalAlignment="Left" Margin="39,20,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="20" Height="37" Width="141"/>
                         <Border BorderBrush="Black" BorderThickness="1" Grid.Column="4" Margin="0,-1,-1,-1">
                             <Grid/>

@@ -255,6 +255,7 @@ namespace JLS___Library.Data
             debug.makeLog("Cache returned");
             return ContentOfLast;
         }
+        public string langCode;
         public string CurrentDate;
         public string currentDate
         {
@@ -265,7 +266,14 @@ namespace JLS___Library.Data
             set
             {
                 string yyyy = value.Substring(0, 4), mm = value.Substring(4, 2), dd = value.Substring(6, 2);
-                CurrentDate = "이 과제는 " + yyyy + "년 " + mm + "월 " + dd + "일의 과제입니다.";
+                if (langCode.Equals("ko-KR"))
+                {
+                    CurrentDate = "이 과제는 " + yyyy + "년 " + mm + "월 " + dd + "일의 과제입니다.";
+                }
+                else if(langCode.Equals("en-US"))
+                {
+                    CurrentDate = "This homework is on " + yyyy + "/" + mm + "/" + dd + ".";
+                }
             }
         }
         /// <summary>

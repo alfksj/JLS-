@@ -176,6 +176,9 @@
   <data name="failure:5" xml:space="preserve">
     <value>&lt;font size="4" color="red"&gt;&lt;b&gt;숙제를 확인할 수 없습니다.&lt;/b&gt;&lt;br /&gt;해당 날짜에 대한 과제를 찾을 수 없습니다.&lt;/font&gt;</value>
   </data>
+  <data name="fakenotavl" xml:space="preserve">
+    <value>가짜 플러그인 기술은 아직 지원되지 않습니다.</value>
+  </data>
   <data name="fakeplugin" xml:space="preserve">
     <value>가짜 플러그인 사용 : </value>
   </data>
@@ -196,6 +199,9 @@
   </data>
   <data name="lang" xml:space="preserve">
     <value>언어 : </value>
+  </data>
+  <data name="langExp" xml:space="preserve">
+    <value>언어설정은 브라우저 기본 언어뿐만 아니라 JLS++의 기본 언어로 쓰입니다.</value>
   </data>
   <data name="name" xml:space="preserve">
     <value>이름 : </value>

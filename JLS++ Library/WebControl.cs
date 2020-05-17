@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using System.IO;
 using System.Threading;
 
 namespace JLS___Library
@@ -218,6 +219,7 @@ namespace JLS___Library
             }
         }
         public string CurrentDate;
+        public string langCode;
         public string currentDate
         {
             get
@@ -227,12 +229,23 @@ namespace JLS___Library
             set
             {
                 string yyyy = value.Substring(0, 4), mm = value.Substring(4, 2), dd = value.Substring(6, 2);
-                CurrentDate = "이 과제는 " + yyyy + "년 " + mm + "월 " + dd + "일의 과제입니다.";
+                if (langCode.Equals("ko-KR"))
+                {
+                    CurrentDate = "이 과제는 " + yyyy + "년 " + mm + "월 " + dd + "일의 과제입니다.";
+                }
+                else if (langCode.Equals("en-US"))
+                {
+                    CurrentDate = "This homework is on " + yyyy + "/" + mm + "/" + dd + ".";
+                }
             }
         }
         public void close()
         {
             driver.Close();
+        }
+        public void openOnGui(int date)
+        {
+            // TODO: 보이는 JLS 과제
         }
     }
 }

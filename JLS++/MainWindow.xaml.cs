@@ -7,7 +7,6 @@ using System.Windows;
 using System.Resources;
 using JLS___Library;
 using JLS___Library.Data;
-using System.Reflection;
 using System.Globalization;
 using System.Windows.Threading;
 
@@ -25,26 +24,29 @@ namespace JLS__
         {
             HelloWorld hwx = new HelloWorld();
             hwx.Show();
+            //언어정보 전파!
+            Setting.load();
             var langCode = "en-US";
+            db.langCode = langCode;
             currentLang = langCode;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(langCode);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(langCode);
             debug.makeLog("Current Culture=" + CultureInfo.CurrentCulture.Name);
             InitializeComponent();
             string[] args = Environment.GetCommandLineArgs();
-            if(args.Length>1) //첫번째 인수는 프로세스 시작 위치니까 믿고 거른다.
+            if (args.Length > 1) //첫번째 인수는 프로세스 시작 위치니까 믿고 거른다.
             {
                 string q = args[1] + "\n";
                 char[] ss = q.ToCharArray();
                 string[] sq = new string[1024];
                 int par = 0, start = 0, len = 0, abs = 0;
-                foreach(char pae in ss)
+                foreach (char pae in ss)
                 {
-                    if(pae=='-')
+                    if (pae == '-')
                     {
                         start = abs;
                     }
-                    else if(pae==',' || pae=='\n')
+                    else if (pae == ',' || pae == '\n')
                     {
                         sq[par] = args[1].Substring(start, len);
                         par++;
@@ -53,7 +55,7 @@ namespace JLS__
                     len++;
                     abs++;
                 }
-                foreach(string cmd in sq)
+                foreach (string cmd in sq)
                 {
                     if (cmd == null) break;
                     if (cmd.Equals("-RESET_REQUEST"))
@@ -71,14 +73,15 @@ namespace JLS__
                     {
                         Console.WriteLine("YOU ARE USING DEBUG MODE\n========================================================");
                     }
-                    else if(cmd.Equals("-no_window"))
+                    else if (cmd.Equals("-no_window"))
                     {
-                        Hide();
+                        {
+                            Hide();
+                        }
                     }
                 }
             }
             db.loadAll();
-            Setting.load();
             UpdateWindow();
             savePath.Text = System.Environment.GetEnvironmentVariable("appdata") + "/.JLS++/data.db";
             Task.Run(async () =>//시간 새로고침
@@ -93,9 +96,11 @@ namespace JLS__
             Task.Run(() =>//시작할때 눈치껏 브라우저 초기화 & 접속 & 숙제 로드
             {
                 web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang, db);
+                web.langCode = langCode;
                 var hw = web.load();
                 var rlm = localize(hw);
-                if(hw.Contains("failure:") || Setting.LoadDatAtSet) {
+                if (hw.Contains("failure:") || Setting.LoadDatAtSet)
+                {
                     html_stream.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
                     {
                         html_stream.Text = rlm;
@@ -107,7 +112,7 @@ namespace JLS__
                 }
             });
             string cach = db.getLatestHw();
-            if(!cach.Equals("NO CACHE DATA FOUND") && Setting.LoadCache)
+            if (!cach.Equals("NO CACHE DATA FOUND") && Setting.LoadCache)
             {
                 debug.makeLog("Use cache date first");
                 html_stream.Text = cach;
@@ -135,6 +140,7 @@ namespace JLS__
         }
         private void setting_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: 기다리는게 싫은 우리 친구들을 위해 애니메이션으로 암/복호화 눈치 못채게 함
             if (settingPage.Visibility == Visibility.Hidden)
             {
                 debug.makeLog("Open Setting");
@@ -160,7 +166,7 @@ namespace JLS__
                 db.loadAll();
                 debug.makeLog("Security Clear");
                 UpdateWindow();
-                Whatsetting.Content = "JLS++에 온걸 환영합니다!";
+                Whatsetting.Content = rm.GetString("setting");
                 greeting_setting.Visibility = Visibility.Visible;
                 profileset.Visibility = Visibility.Hidden;
                 browserset.Visibility = Visibility.Hidden;
@@ -312,6 +318,7 @@ namespace JLS__
         {
             // TODO: 일단은 Chrome에서 jls 사이트 열어줌. JS실행은 나중에 지원하자^^
             Process.Start("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe", "https://www.gojls.com/branch/myjls/homework");
+
         }
 
         private string localize(string s)

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{31EA326D-7F00-49F6-B305-840C68411364}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>JLS__</RootNamespace>
     <AssemblyName>JLS++</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -76,8 +76,7 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlToXamlConverter, Version=1.0.5727.24510, Culture=neutral, processorArchitecture=MSIL">
@@ -222,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="hello.html" />
+    <Resource Include="icon.ico" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\icon.png" />
   </ItemGroup>

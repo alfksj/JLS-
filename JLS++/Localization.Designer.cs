@@ -183,6 +183,60 @@ namespace JLS__ {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;font size=&quot;4&quot; color=&quot;red&quot;&gt;&lt;b&gt;프로필이 설정되어 있지 않습니다.&lt;/b&gt;&lt;br /&gt;프로필을 설정해주세요.&lt;/font&gt;.
+        /// </summary>
+        public static string failure_1 {
+            get {
+                return ResourceManager.GetString("failure:1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;font size=&quot;4&quot; color=&quot;red&quot;&gt;&lt;b&gt;로그인할 수 없습니다.&lt;/b&gt;&lt;br /&gt;ID와 비밀번호가 정확한지 확인해 주세요.&lt;br /&gt;서버 지연이 너무 심하면 이런 오류가 뜰 수 도 있습니다.&lt;/font&gt;.
+        /// </summary>
+        public static string failure_2 {
+            get {
+                return ResourceManager.GetString("failure:2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;font size=&quot;4&quot; color=&quot;red&quot;&gt;&lt;b&gt;숙제를 확인할 수 없습니다.&lt;/b&gt;&lt;br /&gt;이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.&lt;/font&gt;.
+        /// </summary>
+        public static string failure_3 {
+            get {
+                return ResourceManager.GetString("failure:3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;font size=&quot;4&quot;&gt;&lt;b&gt;지정한 날짜에 과제가 없습니다.&lt;/b&gt;&lt;br /&gt; 날짜를 확인하세요&lt;/font&gt;.
+        /// </summary>
+        public static string failure_4 {
+            get {
+                return ResourceManager.GetString("failure:4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;font size=&quot;4&quot; color=&quot;red&quot;&gt;&lt;b&gt;숙제를 확인할 수 없습니다.&lt;/b&gt;&lt;br /&gt;해당 날짜에 대한 과제를 찾을 수 없습니다.&lt;/font&gt;.
+        /// </summary>
+        public static string failure_5 {
+            get {
+                return ResourceManager.GetString("failure:5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 가짜 플러그인 기술은 아직 지원되지 않습니다..
+        /// </summary>
+        public static string fakenotavl {
+            get {
+                return ResourceManager.GetString("fakenotavl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 가짜 플러그인 사용 : .
         /// </summary>
         public static string fakeplugin {
@@ -246,6 +300,15 @@ namespace JLS__ {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 언어설정은 브라우저 기본 언어뿐만 아니라 JLS++의 기본 언어로 쓰입니다..
+        /// </summary>
+        public static string langExp {
+            get {
+                return ResourceManager.GetString("langExp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 이름 : .
         /// </summary>
         public static string name {
@@ -300,6 +363,24 @@ namespace JLS__ {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 프로필을 포함한 모든 설정이 초기화됩니다..
+        /// </summary>
+        public static string resetAlert {
+            get {
+                return ResourceManager.GetString("resetAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 설정을 초기화하기 위해 프로그램을 다시 시작합니다..
+        /// </summary>
+        public static string resProg {
+            get {
+                return ResourceManager.GetString("resProg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 저장 경로 :.
         /// </summary>
         public static string savpath {
@@ -329,6 +410,15 @@ namespace JLS__ {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 님, 안녕하세요..
+        /// </summary>
+        public static string settedProfile {
+            get {
+                return ResourceManager.GetString("settedProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 설정.
         /// </summary>
         public static string setting {
@@ -352,6 +442,15 @@ namespace JLS__ {
         public static string storageSetting {
             get {
                 return ResourceManager.GetString("storageSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 확실합니까?.
+        /// </summary>
+        public static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
             }
         }
         
