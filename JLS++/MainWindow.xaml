@@ -6,99 +6,111 @@
         xmlns:local="clr-namespace:JLS__"
         mc:Ignorable="d"
         Closing="coffin"
-        Title="JLS++" Height="600" Width="1000" Icon="icon.png">
+        Title="JLS++" Height="600" Width="1000" Icon="pack://siteoforigin:,,,/Resources/icon.png" ResizeMode="NoResize">
     <Border x:Name="headline" BorderBrush="Black" BorderThickness="2" Height="80" VerticalAlignment="Top">
         <Grid x:Name="head">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="349*"/>
                 <ColumnDefinition Width="145*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="time" Content="2020년 05월 04일 12시 53분 23초" Margin="10,4,0,4" FontFamily="Malgun Gothic" FontSize="30" FontWeight="Bold"/>
+            <Label x:Name="time" Content="2020/05/04  12:53:23" Margin="10,4,0,4" FontFamily="Malgun Gothic" FontSize="30" FontWeight="Bold"/>
             <Border x:Name="profileline" BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="1">
                 <Grid x:Name="profile">
-                    <Label x:Name="name" Content="프로필을 설정하세요." Margin="64,5,5,0" VerticalAlignment="Top" Height="39" FontSize="20" FontWeight="Bold"/>
-                    <Button x:Name="setting" Content="설정" Margin="64,44,140,0" FontFamily="Malgun Gothic" FontSize="15" BorderBrush="{x:Null}" Foreground="#FF686868" Background="{x:Null}" Click="setting_Click" RenderTransformOrigin="-0.653,0.562"/>
-                    <Button x:Name="aboutt" Content="About" Margin="199,44,5,0" FontFamily="Malgun Gothic" FontSize="15" BorderBrush="{x:Null}" Foreground="#FF686868" Background="{x:Null}" Click="aboutp" RenderTransformOrigin="-0.653,0.562"/>
+                    <Label x:Name="name" Content="{x:Static local:Localization.setProf}" Margin="64,0,5,0" VerticalAlignment="Top" Height="46" FontSize="20" FontWeight="Bold" FontFamily="Malgun Gothic"/>
+                    <Button x:Name="setting" Content="{x:Static local:Localization.setting}" Margin="64,46,140,0" FontFamily="Malgun Gothic" FontSize="15" BorderBrush="{x:Null}" Foreground="#FF686868" Background="{x:Null}" Click="setting_Click" RenderTransformOrigin="-0.653,0.562"/>
+                    <Button x:Name="aboutt" Content="About" Margin="199,46,5,0" FontFamily="Malgun Gothic" FontSize="15" BorderBrush="{x:Null}" Foreground="#FF686868" Background="{x:Null}" Click="aboutp" RenderTransformOrigin="-0.653,0.562"/>
                 </Grid>
             </Border>
             <Grid HorizontalAlignment="Left" Height="76" Margin="185,170,0,-170" VerticalAlignment="Top" Width="100"/>
             <Grid x:Name="root" Height="488" Margin="0,0,0,-491" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
-                <Grid x:Name="settingPage" Visibility="Hidden">
+                <Grid x:Name="settingPage" Background="#FFFFFF" Visibility="Hidden">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="97*"/>
                         <ColumnDefinition Width="74*"/>
                         <ColumnDefinition Width="817*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="Whatsetting" Content="JLS++ 설정" Margin="10,10,10,0" VerticalAlignment="Top" FontFamily="Malgun Gothic Semilight" FontSize="25" Grid.Column="2" Height="47" FontWeight="Bold"/>
+                    <!--Greeting Page-->
+                    <Label x:Name="Whatsetting" Content="{x:Static local:Localization.setting}" Margin="10,10,10,0" VerticalAlignment="Top" FontFamily="Malgun Gothic Semilight" FontSize="25" Grid.Column="2" Height="47" FontWeight="Bold"/>
                     <Grid x:Name="greeting_setting" Grid.Column="2" HorizontalAlignment="Left" Height="431" Margin="10,57,0,0" VerticalAlignment="Top" Width="807" Visibility="Visible">
-                        <Label Content="JLS++에 온걸 환영합니다!" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="25" Height="47" Width="314"/>
-                        <Label Content="JLS++는 정상어학원의 숙제 확인의 귀찮음에 고통받는&#xA;한 잼민이 프로그래머가 개발한 프로그램입니다.&#xA;이 프로그램이 여러분의 과제 수행에 도움이 되었으면 합니다!" Margin="30,57,148,263" FontFamily="Malgun Gothic" FontSize="14"/>
+                        <Label Content="{x:Static local:Localization.greeting}" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="25" Height="47" Width="314"/>
+                        <Label Content="{x:Static local:Localization.explain}" Margin="30,57,148,263" FontFamily="Malgun Gothic" FontSize="14"/>
                     </Grid>
-                    <Grid x:Name="profileset" Grid.Column="2" HorizontalAlignment="Left" Height="431" Margin="10,57,0,0" VerticalAlignment="Top" Width="807" Visibility="Hidden">
-                        <Label Content="이름 : " HorizontalAlignment="Left" Margin="30,6,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="60"/>
-                        <Label Content="ID : " HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="42"/>
-                        <Label Content="비밀번호 : " HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="94"/>
-                        <Label Content="JLS++는 귀하의 개인정보를 소중하게 여깁니다.&#xD;&#xA;위와 같은 정보는 귀하의 기기에만 저장되며&#xD;&#xA;로그인시 JLS 서버 외에는 외부로 전송되지 않습니다." HorizontalAlignment="Left" Margin="10,127,0,0" Height="70" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14" Width="345"/>
-                        <TextBox x:Name="setName" HorizontalAlignment="Left" Height="33" Margin="120,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" FontFamily="Malgun Gothic" FontSize="17"/>
-                        <TextBox x:Name="setID" HorizontalAlignment="Left" Height="33" Margin="120,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" FontFamily="Malgun Gothic" FontSize="17"/>
-                        <PasswordBox x:Name="setPwd" HorizontalAlignment="Left" Height="33" Margin="120,82,0,0" VerticalAlignment="Top" Width="308" FontFamily="Malgun Gothic" FontSize="17"/>
+                    <!--Profile Page-->
+                    <Grid x:Name="profileset" Grid.Column="2" Height="431" Margin="10,57,2,0" VerticalAlignment="Top" Visibility="Hidden">
+                        <Label Content="{x:Static local:Localization.name}" HorizontalAlignment="Left" Margin="30,6,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="103"/>
+                        <Label Content="{x:Static local:Localization.id}" HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="103"/>
+                        <Label Content="{x:Static local:Localization.pwd}" HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="103"/>
+                        <Label Content="{x:Static local:Localization.secExplain}" Margin="10,127,10,0" Height="70" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14"/>
+                        <TextBox x:Name="setName" HorizontalAlignment="Left" Height="33" Margin="133,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" FontFamily="Malgun Gothic" FontSize="17"/>
+                        <TextBox x:Name="setID" HorizontalAlignment="Left" Height="33" Margin="133,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" FontFamily="Malgun Gothic" FontSize="17"/>
+                        <PasswordBox x:Name="setPwd" HorizontalAlignment="Left" Height="33" Margin="133,82,0,0" VerticalAlignment="Top" Width="308" FontFamily="Malgun Gothic" FontSize="17"/>
                     </Grid>
-                    <Grid x:Name="browserset" Grid.Column="2" HorizontalAlignment="Left" Height="431" Margin="10,57,0,0" VerticalAlignment="Top" Width="807" Visibility="Hidden">
-                        <Label Content="브라우저 속성 설정" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="159"/>
-                        <Label Content="User Agent : " HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
-                        <Label Content="언어 : " HorizontalAlignment="Left" Margin="30,108,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
-                        <Label Content="GPU 가속 : " HorizontalAlignment="Left" Margin="30,141,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
-                        <Label Content="창 보이기 : " HorizontalAlignment="Left" Margin="30,174,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
-                        <Label Content="가짜 플러그인 사용 : " HorizontalAlignment="Left" Margin="30,207,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
-                        <Label Content="이러한 정보는 웹서버에 Headless브라우저를 사용하지 않는 척 하기 위해 사용하는 설정들입니다.&#xD;&#xA;필요에 따라 설정하세요. 잘못 설정하면 프로그램이 제대로 구동하지 않을 수 있습니다." HorizontalAlignment="Left" Margin="10,245,0,0" Height="55" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14" Width="629"/>
+                    <!--Browser Page-->
+                    <Grid x:Name="browserset" Grid.Column="2" Height="431" Margin="10,57,2,0" VerticalAlignment="Top" Visibility="Hidden">
+                        <Label Content="{x:Static local:Localization.browcfg}" Margin="10,10,40,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33"/>
+                        <Label Content="{x:Static local:Localization.usr_agent}" HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="40" Width="174"/>
+                        <Label Content="{x:Static local:Localization.lang}" HorizontalAlignment="Left" Margin="30,108,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
+                        <Label Content="{x:Static local:Localization.gpu_acc}" HorizontalAlignment="Left" Margin="30,172,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
+                        <Label Content="{x:Static local:Localization.shwWin}" HorizontalAlignment="Left" Margin="30,205,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
+                        <Label Content="{x:Static local:Localization.fakeplugin}" ToolTip="{x:Static local:Localization.fakenotavl}" HorizontalAlignment="Left" Margin="30,238,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="174"/>
+                        <Label Content="{x:Static local:Localization.browExplain}" Margin="10,271,10,0" Height="55" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14"/>
                         <TextBox x:Name="usragent" Height="63" Margin="204,44,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="17"/>
                         <TextBox x:Name="lang" Height="28" Margin="204,112,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="17"/>
-                        <CheckBox x:Name="gpuac" Content="" HorizontalAlignment="Left" Margin="204,153,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
-                        <CheckBox x:Name="showWin" Content="" HorizontalAlignment="Left" Margin="204,186,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
-                        <CheckBox x:Name="fake_plugin" Content="" HorizontalAlignment="Left" Margin="204,219,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
+                        <CheckBox x:Name="gpuac" Content="" HorizontalAlignment="Left" Margin="204,183,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
+                        <CheckBox x:Name="showWin" Content="" HorizontalAlignment="Left" Margin="204,216,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
+                        <CheckBox x:Name="fake_plugin" Content="" ToolTip="{x:Static local:Localization.fakenotavl}" HorizontalAlignment="Left" Margin="204,249,0,0" VerticalAlignment="Top" Height="16" Width="563" FontFamily="Malgun Gothic" FontSize="17"/>
+                        <Label Content="{x:Static local:Localization.langExp}" Margin="50,140,10,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14" Height="38"/>
                     </Grid>
-                    <Grid x:Name="fileset" Grid.Column="2" HorizontalAlignment="Left" Height="431" Margin="10,57,0,0" VerticalAlignment="Top" Width="807" Visibility="Hidden">
-                        <Label Content="DATABASE 설정" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="159"/>
-                        <Label Content="저장 경로 :" HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="100"/>
-                        <Label Content="JLS++의 모든 정보는 데이터베아스로 관리됩니다.&#xD;&#xA;위의 설정으로 데이터베이스를 직접 관리할 수 있습니다." HorizontalAlignment="Left" Margin="10,120,0,0" Height="55" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14" Width="629"/>
-                        <TextBox x:Name="savePath" Height="29" Margin="130,48,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="17" IsEnabled="False"/>
-                        <Button x:Name="clearSet" Content="설정 초기화" Margin="30,82,40,0" VerticalAlignment="Top" Height="33" FontFamily="Malgun Gothic" FontSize="17" Background="{x:Null}" Click="Button_Click"/>
+                    <!--Storage Page-->
+                    <Grid x:Name="fileset" Grid.Column="2" Height="431" Margin="10,57,2,0" VerticalAlignment="Top" Visibility="Hidden">
+                        <Label Content="{x:Static local:Localization.dbSetting}" Margin="10,10,40,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33"/>
+                        <Label Content="{x:Static local:Localization.savpath}" HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="113"/>
+                        <Label Content="{x:Static local:Localization.dbExplain}" Margin="10,120,10,0" Height="55" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14"/>
+                        <TextBox x:Name="savePath" Height="29" Margin="143,48,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="17" IsEnabled="False"/>
+                        <Button x:Name="clearSet" Content="{x:Static local:Localization.reset}" Margin="30,82,40,0" VerticalAlignment="Top" Height="33" FontFamily="Malgun Gothic" FontSize="17" Background="{x:Null}" Click="Button_Click"/>
                     </Grid>
+                    <!--Crawling Page-->
                     <Grid x:Name="crawl_set" Grid.Column="2" Margin="10,57,0,0" Visibility="Hidden">
-                        <Label Content="캐시데이터 설정" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="159"/>
-                        <Label Content="캐시 우선 사용하기 :" HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="168"/>
+                        <Label Content="{x:Static local:Localization.cacheSetting}" Margin="10,10,39,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33"/>
+                        <Label Content="{x:Static local:Localization.cachePrio}" HorizontalAlignment="Left" Margin="30,44,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="168"/>
                         <CheckBox x:Name="ratc" Content="" Margin="203,54,40,0" VerticalAlignment="Top" Height="16" FontFamily="Malgun Gothic" FontSize="17"/>
-                        <Label Content="이 설정을 켜면 프로그램 시작시 서버와 통신이 완료 되기 이전 캐시데이터를 우선적으로 표시합니다.&#xD;&#xA;과거 숙제의 경우 통신을 시도하기 전 캐시데이터를 확인하여 캐시데이터를 사용할 수 있는 경우 통신을 진행하지 않습니다." Margin="30,70,29.2,0" Height="48" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14"/>
-                        <Label Content="프로그램이 시작할때 서버에서 데이터 받기 : " HorizontalAlignment="Left" Margin="30,123,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="351"/>
+                        <Label Content="{x:Static local:Localization.cacheExplain}" Margin="30,70,29.2,0" Height="48" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14"/>
+                        <Label Content="{x:Static local:Localization.getOnStart}" HorizontalAlignment="Left" Margin="30,123,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" RenderTransformOrigin="0.744,1.462" FontSize="17" Height="33" Width="351"/>
                         <CheckBox x:Name="getAtSt" Content="" Margin="386,133,40,0" VerticalAlignment="Top" Height="16" FontFamily="Malgun Gothic" FontSize="17"/>
-                        <Button Name="del_cache" Content="캐시데이터 모두 지우기" Margin="30,161,39.2,0" VerticalAlignment="Top" Height="33" FontFamily="Malgun Gothic" FontSize="17" Background="{x:Null}" Click="del_cache_Click" />
-                        <Label Content="과거 과제 내용을 포함하여 본 기기에 저장된 과제 데이터를 모두 지웁니다. 프로필은 초기화되지 않습니다." Margin="30,194,29.2,0" Height="30" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14"/>
+                        <Button Name="del_cache" Content="{x:Static local:Localization.delCache}" Margin="30,161,39.2,0" VerticalAlignment="Top" Height="33" FontFamily="Malgun Gothic" FontSize="17" Background="{x:Null}" Click="del_cache_Click" />
+                        <Label Content="{x:Static local:Localization.delCacheExplain}" Margin="30,194,39,0" Height="30" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="14"/>
                     </Grid>
                     <Border BorderBrush="Black" BorderThickness="2,0" Grid.ColumnSpan="2" Margin="-2,-2,2,0">
                         <Grid>
-                            <Button x:Name="account" Content="프로필 설정" Height="39" VerticalAlignment="Top" BorderBrush="#FF707070" BorderThickness="0,0,0,1" FontFamily="Malgun Gothic" FontSize="20" Background="{x:Null}" Click="account_Click"/>
-                            <Button x:Name="browser" Content="브라우저 설정" Height="39" VerticalAlignment="Top" BorderBrush="#FF707070" BorderThickness="0,0,0,1" FontFamily="Malgun Gothic" FontSize="20" Background="{x:Null}" Click="browser_Click" Margin="0,39,0,0"/>
-                            <Button x:Name="crawl" Content="크롤링 설정" Height="39" VerticalAlignment="Top" BorderBrush="#FF707070" BorderThickness="0,0,0,1" FontFamily="Malgun Gothic" FontSize="20" Background="{x:Null}" Click="crawl_Click" Margin="0,78,0,0"/>
-                            <Button x:Name="file" Content="스토리지 설정" Height="39" VerticalAlignment="Top" BorderBrush="#FF707070" BorderThickness="0,0,0,1" FontFamily="Malgun Gothic" FontSize="20" Background="{x:Null}" Click="file_Click" Margin="0,117,0,0"/>
+                            <Button x:Name="account" Content="{x:Static local:Localization.profSetting}" Height="39" VerticalAlignment="Top" BorderBrush="#FF707070" BorderThickness="0,0,0,1" FontFamily="Malgun Gothic" FontSize="20" Background="{x:Null}" Click="account_Click"/>
+                            <Button x:Name="browser" Content="{x:Static local:Localization.browserSetting}" Height="39" VerticalAlignment="Top" BorderBrush="#FF707070" BorderThickness="0,0,0,1" FontFamily="Malgun Gothic" FontSize="20" Background="{x:Null}" Click="browser_Click" Margin="0,39,0,0"/>
+                            <Button x:Name="crawl" Content="{x:Static local:Localization.crawlSetting}" Height="39" VerticalAlignment="Top" BorderBrush="#FF707070" BorderThickness="0,0,0,1" FontFamily="Malgun Gothic" FontSize="20" Background="{x:Null}" Click="crawl_Click" Margin="0,78,0,0"/>
+                            <Button x:Name="file" Content="{x:Static local:Localization.storageSetting}" Height="39" VerticalAlignment="Top" BorderBrush="#FF707070" BorderThickness="0,0,0,1" FontFamily="Malgun Gothic" FontSize="20" Background="{x:Null}" Click="file_Click" Margin="0,117,0,0"/>
                         </Grid>
                     </Border>
                 </Grid>
                 <Grid Margin="133,114,755,274"/>
-                <Border x:Name="r2" BorderBrush="Black" BorderThickness="2,0,2,2" Margin="-2,-1,-2,0" Visibility="Visible">
+                <Border x:Name="r2" BorderBrush="Black" BorderThickness="2,0,2,2" Margin="-2,-1,-2,-2" Background="#FFFFFF" Visibility="Visible">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="13*"/>
-                            <ColumnDefinition Width="7*"/>
-                            <ColumnDefinition Width="36*"/>
+                            <ColumnDefinition Width="261*"/>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="73*"/>
+                            <ColumnDefinition Width="87*"/>
+                            <ColumnDefinition Width="469*"/>
                         </Grid.ColumnDefinitions>
-                        <RichTextBox x:Name="homwork_region" Margin="39,57,30,37" RenderTransformOrigin="-0.55,0.46" IsReadOnly="True" local:HtmlRichTextBoxBehavior.Text="{Binding ElementName=html_stream, Path=Text}" Grid.ColumnSpan="3" />
-                        <Label Content="과제" HorizontalAlignment="Left" Margin="39,20,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="20" Height="37" Width="50"/>
-                        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="3" Margin="0,-1,-1,-1"/>
+                        <RichTextBox x:Name="homwork_region" Margin="39,57,30,37" RenderTransformOrigin="-0.55,0.46" IsReadOnly="True" local:HtmlRichTextBoxBehavior.Text="{Binding ElementName=html_stream, Path=Text}" Grid.ColumnSpan="4" FontFamily="Malgun Gothic" VerticalScrollBarVisibility="Auto" />
+                        <Label Content="{x:Static local:Localization.hws}" HorizontalAlignment="Left" Margin="39,20,0,0" VerticalAlignment="Top" FontFamily="Malgun Gothic" FontSize="20" Height="37" Width="141"/>
+                        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="4" Margin="0,-1,-1,-1">
+                            <Grid/>
+                        </Border>
                         <TextBox x:Name="html_stream" HorizontalAlignment="Left" Height="90" Margin="5,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Text="Loading" Visibility="Hidden"/>
-                        <Button x:Name="hwreg" Content="과제 새로고침" Margin="5,0,10,10" Height="22" VerticalAlignment="Bottom" Click="Button_Click_1" Grid.Column="1" FontFamily="Malgun Gothic"/>
-                        <TextBox x:Name="date" Height="22" Margin="39,0,5,10" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
-                        <Button Content="재접속" Margin="10,0,30,10" Grid.Column="2" FontFamily="Malgun Gothic" Height="22" VerticalAlignment="Bottom" Click="Button_Click_2"/>
+                        <TextBox x:Name="date" Height="22" Margin="76,0,10,10" TextWrapping="Wrap" VerticalAlignment="Bottom" FontFamily="Malgun Gothic"/>
+                        <Label Content="{x:Static local:Localization.date}" HorizontalAlignment="Left" Margin="39,453,0,0" VerticalAlignment="Top" Width="37" Height="26"/>
+                        <Label x:Name="thisis" Content="{x:Static local:Localization.unlad}" Margin="180,27,30,0" VerticalAlignment="Top" Grid.ColumnSpan="4" FontFamily="Malgun Gothic" FontSize="15" Height="32"/>
+                        <Button x:Name="hwreg" Content="{x:Static local:Localization.refres}" Margin="0,0,10,10" Height="22" VerticalAlignment="Bottom" Click="Button_Click_1" Grid.Column="1" FontFamily="Malgun Gothic"/>
+                        <Button Content="{x:Static local:Localization.recon}" Margin="0,0,10,10" Grid.Column="2" FontFamily="Malgun Gothic" Height="22" VerticalAlignment="Bottom" Click="Button_Click_2" RenderTransformOrigin="-0.39,0.561"/>
+                        <Button Content="ONW" Grid.Column="3" Margin="0,0,30,12" Height="20" VerticalAlignment="Bottom" Click="Button_Click_3"/>
                     </Grid>
                 </Border>
             </Grid>

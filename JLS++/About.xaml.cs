@@ -11,7 +11,7 @@ namespace JLS__
         public About()
         {
             InitializeComponent();
-            html.Text = File.ReadAllText("asset/hello.html");
+            //html.Text = File.ReadAllText("asset/hello.html");
         }
     }
 }

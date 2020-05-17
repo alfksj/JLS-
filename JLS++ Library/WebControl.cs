@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using System.IO;
 using System.Threading;
 
 namespace JLS___Library
@@ -19,6 +20,7 @@ namespace JLS___Library
         public ChromeDriverService driverSvc;
         public ChromeOptions options;
         public ChromeDriver driver;
+        private bool loaded = false;
         public WebControl(string agent, bool gpu, bool fake, bool use_win, string lang, Database sav)
         {
             debug.makeLog("Headless Browser Initializing");
@@ -47,50 +49,103 @@ namespace JLS___Library
             debug.makeLog("Creating new chrome driver");
             driver = new ChromeDriver(driverSvc, options);
             debug.makeLog("Done");
+            loaded = false;
         }
         public string load()
         {
             try
             {
-                debug.makeLog("Loading Howework");
-                if (Secure.Propile == null)
+                if (!loaded)
                 {
-                    debug.makeLog("Failure: No login data found");
-                    return "<font size=\"4\" color=\"red\"><b>프로필이 설정되어 있지 않습니다.</b><br />프로필을 설정해주세요.</font>";
+                    debug.makeLog("Loading Howework");
+                    if (Secure.Propile == null)
+                    {
+                        debug.makeLog("Failure: No login data found");
+                        return "failure:1";
+                    }
+                    debug.makeLog("Navigating to target URL");
+                    driver.Navigate().GoToUrl("https://www.gojls.com/branch/myjls/homework");
+                    debug.makeLog("Finding elements");
+                    var id = driver.FindElementById("userId");
+                    var pwd = driver.FindElementById("passWd");
+                    var go = driver.FindElementByClassName("log");
+                    debug.makeLog("Sending keys");
+                    id.SendKeys(Secure.Propile.Id);
+                    pwd.SendKeys(Secure.Propile.Pwd);
+                    go.Click();
+                    debug.makeLog("Logged in");
+                    debug.makeLog("Checking status");
+                    Thread.Sleep(1000);
+                    if (driver.Url.Equals("https://www.gojls.com/login?preURL=/branch/myjls/homework"))
+                    {
+                        debug.makeLog("Login failure");
+                        return "failure:2";
+                    }
+                    debug.makeLog("Getting rid of garbage alert");
+                    var ok = driver.FindElementByClassName("swal2-confirm");
+                    ok.Click();
+                    if (!Setting.LoadDatAtSet)
+                    {
+                        debug.makeLog("No update data");
+                        return "No Data Load When Program Initialize";
+                    }
                 }
-                debug.makeLog("Navigating to target URL");
-                driver.Navigate().GoToUrl("https://www.gojls.com/branch/myjls/homework");
-                debug.makeLog("Finding elements");
-                var id = driver.FindElementById("userId");
-                var pwd = driver.FindElementById("passWd");
-                var go = driver.FindElementByClassName("log");
-                debug.makeLog("Sending keys");
-                id.SendKeys(Secure.Propile.Id);
-                pwd.SendKeys(Secure.Propile.Pwd);
-                go.Click();
-                debug.makeLog("Logged in");
-                debug.makeLog("Checking status");
-                Thread.Sleep(1000);
-                if (driver.Url.Equals("https://www.gojls.com/login?preURL=/branch/myjls/homework"))
-                {
-                    debug.makeLog("Login failure");
-                    return "<font size=\"4\" color=\"red\"><b>로그인할 수 없습니다.</b><br />ID와 비밀번호가 정확한지 확인해 주세요.<br />서버 지연이 너무 심하면 이런 오류가 뜰 수 도 있습니다.</font>";
-                }
-                debug.makeLog("Getting rid of garbage alert");
-                var ok = driver.FindElementByClassName("swal2-confirm");
-                ok.Click();
-                if (!Setting.LoadDatAtSet)
-                {
-                    debug.makeLog("No update data");
-                    return "No Data Load When Program Initialize";
-                }
+                loaded = true;
                 //최신 숙제 받아오기
                 return justGet();
             }
             catch(Exception e)
             {
-                debug.makeLog("Exception: " + e.Message);
-                return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
+                debug.makeLog("Exception: " + e.Message + "\n" + e.StackTrace);
+                return "failure:3";
+            }
+        }
+        public string load(int date)
+        {
+            try
+            {
+                debug.makeLog("Loading Howework");
+                if(!loaded)
+                {
+                    if (Secure.Propile == null)
+                    {
+                        debug.makeLog("Failure: No login data found");
+                        return "failure:1";
+                    }
+                    debug.makeLog("Navigating to target URL");
+                    driver.Navigate().GoToUrl("https://www.gojls.com/branch/myjls/homework");
+                    debug.makeLog("Finding elements");
+                    var id = driver.FindElementById("userId");
+                    var pwd = driver.FindElementById("passWd");
+                    var go = driver.FindElementByClassName("log");
+                    debug.makeLog("Sending keys");
+                    id.SendKeys(Secure.Propile.Id);
+                    pwd.SendKeys(Secure.Propile.Pwd);
+                    go.Click();
+                    debug.makeLog("Logged in");
+                    debug.makeLog("Checking status");
+                    Thread.Sleep(1000);
+                    if (driver.Url.Equals("https://www.gojls.com/login?preURL=/branch/myjls/homework"))
+                    {
+                        debug.makeLog("Login failure");
+                        return "failure:2";
+                    }
+                    debug.makeLog("Getting rid of garbage alert");
+                    var ok = driver.FindElementByClassName("swal2-confirm");
+                    ok.Click();
+                    if (!Setting.LoadDatAtSet)
+                    {
+                        debug.makeLog("No update data");
+                        return "No Data Load When Program Initialize";
+                    }
+                }
+                loaded = true;
+                return justGet(date);
+            }
+            catch(Exception e)
+            {
+                debug.makeLog("Exception: " + e.Message + "\n" + e.StackTrace);
+                return "failure:3";
             }
         }
         public string justGet()
@@ -105,13 +160,14 @@ namespace JLS___Library
                 var tst = driver.FindElementById("day_" + cmdTo.Substring(4, 8));
                 if(!tst.GetAttribute("class").Contains("on"))
                 {
-                    return "<font size=\"4\"><b>지정한 날짜에 과제가 없습니다.</b><br /> 날짜를 확인하세요</font>";
+                    return "failure:4";
                 }
                 var hwPane = driver.FindElementByClassName("oldarea");
                 string real = hwPane.GetAttribute("innerHTML");
                 debug.makeLog("Saving to DB");
                 sav.addHw(Int32.Parse(cmdTo.Substring(4, 8)), real);
                 debug.makeLog("All set!");
+                currentDate = cmdTo.Substring(4, 8);
                 return real;
             }
             catch (Exception e)
@@ -119,11 +175,12 @@ namespace JLS___Library
                 debug.makeLog(e.Message);
                 if (e.Message.Equals("javascript error: studyDate is not defined"))
                 {
-                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />해당 날짜에 대한 과제를 찾을 수 없습니다.</font>";
+                    return "failure:5";
                 }
                 else
                 {
-                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
+                    debug.makeLog("Exception: " + e.Message + "\n" + e.StackTrace);
+                    return "failiure:3";
                 }
             }
         }
@@ -138,13 +195,14 @@ namespace JLS___Library
                 var tst = driver.FindElementById("day_" + date);
                 if (!tst.GetAttribute("class").Contains("on"))
                 {
-                    return "<font size=\"4\"><b>지정한 날짜에 과제가 없습니다.</b><br /> 날짜를 확인하세요</font>";
+                    return "failure:4";
                 }
                 var hwPane = driver.FindElementByClassName("oldarea");
                 string real = hwPane.GetAttribute("innerHTML");
                 debug.makeLog("Saving to DB");
                 sav.addHw(date, real);
                 debug.makeLog("All set!");
+                currentDate = date.ToString();
                 return real;
             }
             catch(Exception e)
@@ -152,17 +210,42 @@ namespace JLS___Library
                 debug.makeLog(e.Message);
                 if (e.Message.Equals("javascript error: studyDate is not defined"))
                 {
-                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />해당 날짜에 대한 과제를 찾을 수 없습니다.</font>";
+                    return "failure:5";
                 }
                 else
                 {
-                    return "<font size=\"4\" color=\"red\"><b>숙제를 확인할 수 없습니다.</b><br />이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.</font>";
+                    return "failure:3";
+                }
+            }
+        }
+        public string CurrentDate;
+        public string langCode;
+        public string currentDate
+        {
+            get
+            {
+                return CurrentDate;
+            }
+            set
+            {
+                string yyyy = value.Substring(0, 4), mm = value.Substring(4, 2), dd = value.Substring(6, 2);
+                if (langCode.Equals("ko-KR"))
+                {
+                    CurrentDate = "이 과제는 " + yyyy + "년 " + mm + "월 " + dd + "일의 과제입니다.";
+                }
+                else if (langCode.Equals("en-US"))
+                {
+                    CurrentDate = "This homework is on " + yyyy + "/" + mm + "/" + dd + ".";
                 }
             }
         }
         public void close()
         {
             driver.Close();
+        }
+        public void openOnGui(int date)
+        {
+            // TODO: 보이는 JLS 과제
         }
     }
 }

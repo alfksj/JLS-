@@ -5,6 +5,7 @@ using System.Collections;
 
 namespace JLS___Library.Data
 {
+    // TODO: 프로필 정보를 수정하고 저장하는 경우 PRIMARY KEY가 1씩 늘어남(???)
     public class Database
     {
         private string DB_ROOT = Environment.GetEnvironmentVariable("appdata") + "/.JLS++/data.db";
@@ -141,7 +142,7 @@ namespace JLS___Library.Data
             SQLiteDataReader dat = cmd.ExecuteReader();
             while (dat.Read())
             {
-                Secure.setProfile(dat["name"].ToString(), dat["id"].ToString(), dat["password"].ToString());
+                Secure.setProfile(dat["name"].ToString(), Secure.AES256Decrypt(dat["id"].ToString()), Secure.AES256Decrypt(dat["password"].ToString()));
             }
             Setting.load();
             dat.Close();
@@ -173,17 +174,18 @@ namespace JLS___Library.Data
                 SQLiteDataReader read = cmd.ExecuteReader();
                 while (read.Read())
                 {
-                    exeCommandWithoutOpen("update profile set name=\'" + prof.Name + "\', id=\'" + prof.Id + "\', password=\'" + prof.Pwd + "\' where key=1");
+                    exeCommandWithoutOpen("update profile set name=\'" + prof.Name + "\', id=\'" + Secure.AES256Encrypt(prof.Id)
+                        + "\', password=\'" + Secure.AES256Encrypt(prof.Pwd) + "\' where key="+read["key"]);
                     flag = false;
                 }
-                Setting.save();
                 read.Close();
-                con.Close();
                 if (flag)
                 {
-                    exeCommand("insert into profile (name, id, password) values (\'" + prof.Name + "\', \'" + prof.Id + "\', \'" + prof.Pwd + "\')");
+                    exeCommandWithoutOpen("insert into profile (name, id, password) values (\'" + prof.Name + "\', \'" + Secure.AES256Encrypt(prof.Id)
+                        + "\', \'" + Secure.AES256Encrypt(prof.Pwd) + "\')");
                 }
             }
+            con.Close();
             exeCommand("update browser set usr_agent=\'" + WebControl.usr_agent + "\', fake_plugin=" + WebControl.fake_plugin
                 + ", use_window=" + WebControl.use_win + ", gpu_acc=" + WebControl.gpu_acc + ", lang=\'" + WebControl.lang
                 + "\' where key=1");
@@ -215,6 +217,7 @@ namespace JLS___Library.Data
             string cmds = "select * from hw";
             SQLiteCommand cmd = new SQLiteCommand(cmds, hw);
             SQLiteDataReader read = cmd.ExecuteReader();
+            currentDate = date.ToString();
             while (read.Read())
             {
                 if((Int64)read["key"] == date)
@@ -236,19 +239,42 @@ namespace JLS___Library.Data
             string cmds = "select * from hw";
             SQLiteCommand cmd = new SQLiteCommand(cmds, hw);
             SQLiteDataReader readx = cmd.ExecuteReader();
-            int DateOfLast = 0;
+            long DateOfLast = 10000000;
             string ContentOfLast = "NO CACHE DATA FOUND";
             while (readx.Read())
             {
                 if((Int64)readx["key"] > DateOfLast)
                 {
                     ContentOfLast = readx["content"].ToString();
+                    DateOfLast = (Int64)readx["key"];
                 }
             }
+            currentDate = DateOfLast.ToString();
             readx.Close();
             hw.Close();
             debug.makeLog("Cache returned");
             return ContentOfLast;
+        }
+        public string langCode;
+        public string CurrentDate;
+        public string currentDate
+        {
+            get
+            {
+                return CurrentDate;
+            }
+            set
+            {
+                string yyyy = value.Substring(0, 4), mm = value.Substring(4, 2), dd = value.Substring(6, 2);
+                if (langCode.Equals("ko-KR"))
+                {
+                    CurrentDate = "이 과제는 " + yyyy + "년 " + mm + "월 " + dd + "일의 과제입니다.";
+                }
+                else if(langCode.Equals("en-US"))
+                {
+                    CurrentDate = "This homework is on " + yyyy + "/" + mm + "/" + dd + ".";
+                }
+            }
         }
         /// <summary>
         /// db를 완전히 지웁니다.

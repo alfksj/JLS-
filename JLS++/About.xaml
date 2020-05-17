@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JLS__"
         mc:Ignorable="d"
-        Title="About" Height="348.215" Width="565.625" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+        Title="About" Height="348.215" Width="565.625" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" Icon="pack://siteoforigin:,,,/Resources/icon.png">
     <Grid>
         <Label Content="JLS++" Margin="10,0" VerticalAlignment="Top" FontFamily="SpoqaHanSans" FontSize="30" FontWeight="Bold"/>
         <RichTextBox Margin="10,59,10,10" local:HtmlRichTextBoxBehavior.Text="{Binding ElementName=html, Path=Text}" />
         <TextBox x:Name="html" HorizontalAlignment="Left" Height="23" Margin="-174,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <WebBrowser HorizontalAlignment="Left" Height="255" Margin="10,54,0,0" VerticalAlignment="Top" Width="540" Source="http://jls.r-e.kr"/>
 
     </Grid>
 </Window>

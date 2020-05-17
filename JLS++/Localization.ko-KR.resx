@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="browcfg" xml:space="preserve">
+    <value>브라우저 속성 설정</value>
+  </data>
+  <data name="browExplain" xml:space="preserve">
+    <value>이러한 정보는 웹서버에 Headless브라우저를 사용하지 않는 척 하기 위해 사용하는 설정들입니다.
+필요에 따라 설정하세요. 잘못 설정하면 프로그램이 제대로 구동하지 않을 수 있습니다.</value>
+  </data>
+  <data name="browserSetting" xml:space="preserve">
+    <value>브라우저 설정</value>
+  </data>
+  <data name="cacheExplain" xml:space="preserve">
+    <value>이 설정을 켜면 프로그램 시작시 서버와 통신이 완료 되기 이전 캐시데이터를 우선적으로 표시합니다.
+과거 숙제의 경우 통신을 시도하기 전 캐시데이터를 확인하여 캐시데이터를 사용할 수 있는 경우 통신을 진행하지 않습니다.</value>
+  </data>
+  <data name="cachePrio" xml:space="preserve">
+    <value>캐시 우선 사용하기 :</value>
+  </data>
+  <data name="cacheSetting" xml:space="preserve">
+    <value>캐시데이터 설정</value>
+  </data>
+  <data name="crawlSetting" xml:space="preserve">
+    <value>크롤링 설정</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>날짜:</value>
+  </data>
+  <data name="dbExplain" xml:space="preserve">
+    <value>JLS++의 모든 정보는 데이터베이스로 관리됩니다.
+위의 설정으로 데이터베이스를 직접 관리할 수 있습니다.</value>
+  </data>
+  <data name="dbSetting" xml:space="preserve">
+    <value>DATABASE 설정</value>
+  </data>
+  <data name="delCache" xml:space="preserve">
+    <value>캐시데이터 모두 지우기</value>
+  </data>
+  <data name="delCacheExplain" xml:space="preserve">
+    <value>과거 과제 내용을 포함하여 본 기기에 저장된 과제 데이터를 모두 지웁니다. 프로필은 초기화되지 않습니다.</value>
+  </data>
+  <data name="explain" xml:space="preserve">
+    <value>JLS++는 정상어학원의 숙제 확인의 귀찮음에 고통받는
+한 잼민이 프로그래머가 개발한 프로그램입니다.
+이 프로그램이 여러분의 과제 수행에 도움이 되었으면 합니다!</value>
+  </data>
+  <data name="failure:1" xml:space="preserve">
+    <value>&lt;font size="4" color="red"&gt;&lt;b&gt;프로필이 설정되어 있지 않습니다.&lt;/b&gt;&lt;br /&gt;프로필을 설정해주세요.&lt;/font&gt;</value>
+  </data>
+  <data name="failure:2" xml:space="preserve">
+    <value>&lt;font size="4" color="red"&gt;&lt;b&gt;로그인할 수 없습니다.&lt;/b&gt;&lt;br /&gt;ID와 비밀번호가 정확한지 확인해 주세요.&lt;br /&gt;서버 지연이 너무 심하면 이런 오류가 뜰 수 도 있습니다.&lt;/font&gt;</value>
+  </data>
+  <data name="failure:3" xml:space="preserve">
+    <value>&lt;font size="4" color="red"&gt;&lt;b&gt;숙제를 확인할 수 없습니다.&lt;/b&gt;&lt;br /&gt;이 문제의 원인은 다양합니다. 일시적으로 JLS서버를 이용할 수 없는 것일 수 있고 지연시간이 너무 심한것 일 수 도 있으며 잘못된 날짜를 입력한 것 일 수 도 있습니다.&lt;/font&gt;</value>
+  </data>
+  <data name="failure:4" xml:space="preserve">
+    <value>&lt;font size="4"&gt;&lt;b&gt;지정한 날짜에 과제가 없습니다.&lt;/b&gt;&lt;br /&gt; 날짜를 확인하세요&lt;/font&gt;</value>
+  </data>
+  <data name="failure:5" xml:space="preserve">
+    <value>&lt;font size="4" color="red"&gt;&lt;b&gt;숙제를 확인할 수 없습니다.&lt;/b&gt;&lt;br /&gt;해당 날짜에 대한 과제를 찾을 수 없습니다.&lt;/font&gt;</value>
+  </data>
+  <data name="fakenotavl" xml:space="preserve">
+    <value>가짜 플러그인 기술은 아직 지원되지 않습니다.</value>
+  </data>
+  <data name="fakeplugin" xml:space="preserve">
+    <value>가짜 플러그인 사용 : </value>
+  </data>
+  <data name="getOnStart" xml:space="preserve">
+    <value>프로그램이 시작할때 서버에서 데이터 받기 :</value>
+  </data>
+  <data name="gpu_acc" xml:space="preserve">
+    <value>GPU 가속 : </value>
+  </data>
+  <data name="greeting" xml:space="preserve">
+    <value>JLS++에 온걸 환영합니다.</value>
+  </data>
+  <data name="hws" xml:space="preserve">
+    <value>과제</value>
+  </data>
+  <data name="id" xml:space="preserve">
+    <value>ID : </value>
+  </data>
+  <data name="lang" xml:space="preserve">
+    <value>언어 : </value>
+  </data>
+  <data name="langExp" xml:space="preserve">
+    <value>언어설정은 브라우저 기본 언어뿐만 아니라 JLS++의 기본 언어로 쓰입니다.</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>이름 : </value>
+  </data>
+  <data name="profSetting" xml:space="preserve">
+    <value>프로필 설정</value>
+  </data>
+  <data name="pwd" xml:space="preserve">
+    <value>비밀번호 : </value>
+  </data>
+  <data name="recon" xml:space="preserve">
+    <value>재접속</value>
+  </data>
+  <data name="refres" xml:space="preserve">
+    <value>과제 새로고침</value>
+  </data>
+  <data name="reset" xml:space="preserve">
+    <value>설정 초기화</value>
+  </data>
+  <data name="resetAlert" xml:space="preserve">
+    <value>프로필을 포함한 모든 설정이 초기화됩니다.
+확실합니까?</value>
+  </data>
+  <data name="resProg" xml:space="preserve">
+    <value>설정을 초기화하기 위해 프로그램을 다시 시작합니다.</value>
+  </data>
+  <data name="savpath" xml:space="preserve">
+    <value>저장 경로 :</value>
+  </data>
+  <data name="secExplain" xml:space="preserve">
+    <value>JLS++는 귀하의 개인정보를 소중하게 여깁니다.
+위와 같은 정보는 귀하의 기기에만 저장되며
+로그인시 JLS 서버 외에는 외부로 전송되지 않습니다.</value>
+  </data>
+  <data name="setProf" xml:space="preserve">
+    <value>프로필을 설정하세요.</value>
+  </data>
+  <data name="settedProfile" xml:space="preserve">
+    <value>님, 안녕하세요.</value>
+  </data>
+  <data name="setting" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="shwWin" xml:space="preserve">
+    <value>창 보이기 : </value>
+  </data>
+  <data name="storageSetting" xml:space="preserve">
+    <value>스토리지 설정</value>
+  </data>
+  <data name="unlad" xml:space="preserve">
+    <value>과제를 불러오지 않았습니다.</value>
+  </data>
+  <data name="usr_agent" xml:space="preserve">
+    <value>User Agent : </value>
+  </data>
+</root>
