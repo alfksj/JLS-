@@ -220,7 +220,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="hello.html" />
     <Resource Include="icon.ico" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\icon.png" />

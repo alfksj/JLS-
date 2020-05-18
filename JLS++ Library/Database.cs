@@ -49,7 +49,6 @@ namespace JLS___Library.Data
                 File.WriteAllText(System.Environment.GetEnvironmentVariable("appdata") + "/.JLS++/setting.json", "{\n" +
                     "\"rather_cache\":true,\n" +
                     "\"loadWhenStart\":true\n" +
-
                     "}");
             }
             else
@@ -176,6 +175,9 @@ namespace JLS___Library.Data
                 {
                     exeCommandWithoutOpen("update profile set name=\'" + prof.Name + "\', id=\'" + Secure.AES256Encrypt(prof.Id)
                         + "\', password=\'" + Secure.AES256Encrypt(prof.Pwd) + "\' where key="+read["key"]);
+                    exeCommandWithoutOpen("update browser set usr_agent=\'" + WebControl.usr_agent + "\', fake_plugin=" + WebControl.fake_plugin
+                        + ", use_window=" + WebControl.use_win + ", gpu_acc=" + WebControl.gpu_acc + ", lang=\'" + WebControl.lang
+                        + "\' where key="+read["key"]);
                     flag = false;
                 }
                 read.Close();
@@ -183,12 +185,12 @@ namespace JLS___Library.Data
                 {
                     exeCommandWithoutOpen("insert into profile (name, id, password) values (\'" + prof.Name + "\', \'" + Secure.AES256Encrypt(prof.Id)
                         + "\', \'" + Secure.AES256Encrypt(prof.Pwd) + "\')");
+                    exeCommandWithoutOpen("update browser set usr_agent=\'" + WebControl.usr_agent + "\', fake_plugin=" + WebControl.fake_plugin
+                        + ", use_window=" + WebControl.use_win + ", gpu_acc=" + WebControl.gpu_acc + ", lang=\'" + WebControl.lang
+                        + "\' where key=1");
                 }
             }
             con.Close();
-            exeCommand("update browser set usr_agent=\'" + WebControl.usr_agent + "\', fake_plugin=" + WebControl.fake_plugin
-                + ", use_window=" + WebControl.use_win + ", gpu_acc=" + WebControl.gpu_acc + ", lang=\'" + WebControl.lang
-                + "\' where key=1");
             Setting.save();
         }
         public void addHw(int date, string content)

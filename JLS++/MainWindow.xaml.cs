@@ -25,8 +25,9 @@ namespace JLS__
             HelloWorld hwx = new HelloWorld();
             hwx.Show();
             //언어정보 전파!
+            db.loadAll();
             Setting.load();
-            var langCode = "en-US";
+            var langCode = WebControl.lang;
             db.langCode = langCode;
             currentLang = langCode;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(langCode);
@@ -81,7 +82,6 @@ namespace JLS__
                     }
                 }
             }
-            db.loadAll();
             UpdateWindow();
             savePath.Text = System.Environment.GetEnvironmentVariable("appdata") + "/.JLS++/data.db";
             Task.Run(async () =>//시간 새로고침
