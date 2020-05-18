@@ -7,7 +7,7 @@ namespace JLS___Library
     {
         private static string ST_PATH = System.Environment.GetEnvironmentVariable("appdata") + "/.JLS++/setting.json";
         private static bool loadCache, loadDatAtSet;
-        private static string langCode;
+        private static string langCode;//실제로 안씀
         public static bool LoadCache
         {
             get
