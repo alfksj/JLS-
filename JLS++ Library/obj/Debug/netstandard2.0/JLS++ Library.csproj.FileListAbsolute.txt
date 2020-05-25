@@ -1,9 +1,8 @@
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++ Library\bin\Debug\netstandard2.0\JLS++ Library.deps.json
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++ Library\bin\Debug\netstandard2.0\JLS++ Library.dll
-C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++ Library\obj\Debug\netstandard2.0\JLS++ Library.csprojAssemblyReference.cache
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++ Library\obj\Debug\netstandard2.0\JLS++ Library.AssemblyInfoInputs.cache
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++ Library\obj\Debug\netstandard2.0\JLS++ Library.AssemblyInfo.cs
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++ Library\bin\Debug\netstandard2.0\JLS++ Library.pdb
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++ Library\obj\Debug\netstandard2.0\JLS++ Library.dll
 C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++ Library\obj\Debug\netstandard2.0\JLS++ Library.pdb
-C:\Users\hyunc\Source\Repos\alfksj\JLS++\JLS++ Library\obj\Debug\netstandard2.0\JLS++ Library.csproj.CoreCompileInputs.cache
+C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++ Library\obj\Debug\netstandard2.0\JLS++ Library.csproj.CoreCompileInputs.cache

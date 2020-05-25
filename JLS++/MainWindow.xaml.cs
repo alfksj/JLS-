@@ -9,6 +9,7 @@ using JLS___Library;
 using JLS___Library.Data;
 using System.Globalization;
 using System.Windows.Threading;
+using System.Text;
 
 namespace JLS__
 {
@@ -22,6 +23,8 @@ namespace JLS__
         private Thread currentThread = Thread.CurrentThread;
         public MainWindow()
         {
+            //Write in UTF-8
+            //Console.OutputEncoding = new UTF8Encoding();
             HelloWorld hwx = new HelloWorld();
             hwx.Show();
             //언어정보 전파!
