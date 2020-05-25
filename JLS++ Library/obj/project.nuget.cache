@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "47ZCsSFkeQQSpuG+DXrvtYQ656E9PTsgLCYsXqAT/etq9xwTJU08uf+800jxYdkW6MVdzOgelQtoJ32BrG6ZcQ==",
+  "dgSpecHash": "7jgOAMjozLUno8ddS10Vr8/r57+qaEQPIxw9QG4ynbUiTAePYXUpgAGu2BsEZz4UeVgW6ZFsnRa/W6zkcpz/VQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hyunc\\Source\\Repos\\alfksj\\JLS++\\JLS++ Library\\JLS++ Library.csproj",
+  "projectFilePath": "C:\\Users\\hyunc\\source\\repos\\alfksj\\JLS++\\JLS++ Library\\JLS++ Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hyunc\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\hyunc\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\hyunc\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
-    "C:\\Users\\hyunc\\.nuget\\packages\\selenium.chrome.webdriver\\81.0.0\\selenium.chrome.webdriver.81.0.0.nupkg.sha512",
+    "C:\\Users\\hyunc\\.nuget\\packages\\selenium.chrome.webdriver\\83.0.0\\selenium.chrome.webdriver.83.0.0.nupkg.sha512",
     "C:\\Users\\hyunc\\.nuget\\packages\\selenium.webdriver\\3.141.0\\selenium.webdriver.3.141.0.nupkg.sha512",
-    "C:\\Users\\hyunc\\.nuget\\packages\\selenium.webdriver.chromedriver\\81.0.4044.13800\\selenium.webdriver.chromedriver.81.0.4044.13800.nupkg.sha512",
+    "C:\\Users\\hyunc\\.nuget\\packages\\selenium.webdriver.chromedriver\\83.0.4103.3900\\selenium.webdriver.chromedriver.83.0.4103.3900.nupkg.sha512",
     "C:\\Users\\hyunc\\.nuget\\packages\\system.data.sqlite.core\\1.0.112.2\\system.data.sqlite.core.1.0.112.2.nupkg.sha512"
   ],
   "logs": []

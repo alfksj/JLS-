@@ -11,9 +11,9 @@
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "12.0.3",
-          "Selenium.Chrome.WebDriver": "81.0.0",
+          "Selenium.Chrome.WebDriver": "83.0.0",
           "Selenium.WebDriver": "3.141.0",
-          "Selenium.WebDriver.ChromeDriver": "81.0.4044.13800",
+          "Selenium.WebDriver.ChromeDriver": "83.0.4103.3900",
           "System.Data.SQLite.Core": "1.0.112.2"
         },
         "runtime": {
@@ -34,7 +34,7 @@
           }
         }
       },
-      "Selenium.Chrome.WebDriver/81.0.0": {},
+      "Selenium.Chrome.WebDriver/83.0.0": {},
       "Selenium.WebDriver/3.141.0": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.3"
@@ -46,7 +46,7 @@
           }
         }
       },
-      "Selenium.WebDriver.ChromeDriver/81.0.4044.13800": {},
+      "Selenium.WebDriver.ChromeDriver/83.0.4103.3900": {},
       "System.Data.SQLite.Core/1.0.112.2": {
         "runtime": {
           "lib/netstandard2.0/System.Data.SQLite.dll": {
@@ -84,12 +84,12 @@
       "path": "newtonsoft.json/12.0.3",
       "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
     },
-    "Selenium.Chrome.WebDriver/81.0.0": {
+    "Selenium.Chrome.WebDriver/83.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4ezM22zMCtSEVajf6uhn4YIDfP/LTMYt44vkgn6bZ4K2oTKIpVyw37JJh6O2ko4c3FiQe0quwH2ut4GkmmaedQ==",
-      "path": "selenium.chrome.webdriver/81.0.0",
-      "hashPath": "selenium.chrome.webdriver.81.0.0.nupkg.sha512"
+      "sha512": "sha512-dnPhsNdTi3e9xsjKP+JzNX+CaHxhnZP1XscOBeQ2g5bPv5ot5E8KcIYuo0gtcVY8Y5e3ASzEnwjBpvtExKNstA==",
+      "path": "selenium.chrome.webdriver/83.0.0",
+      "hashPath": "selenium.chrome.webdriver.83.0.0.nupkg.sha512"
     },
     "Selenium.WebDriver/3.141.0": {
       "type": "package",
@@ -98,12 +98,12 @@
       "path": "selenium.webdriver/3.141.0",
       "hashPath": "selenium.webdriver.3.141.0.nupkg.sha512"
     },
-    "Selenium.WebDriver.ChromeDriver/81.0.4044.13800": {
+    "Selenium.WebDriver.ChromeDriver/83.0.4103.3900": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-2b1bjeB0HmTw9wJ41FFcXXRTRMjf0Xm9nrlw1iK6tBTm3Rwqi5+UX9WWaj+lXp8itmmVOKmnYfq49aVDNq281w==",
-      "path": "selenium.webdriver.chromedriver/81.0.4044.13800",
-      "hashPath": "selenium.webdriver.chromedriver.81.0.4044.13800.nupkg.sha512"
+      "sha512": "sha512-lbVAHeSPf5E0IJNtsO5sf1rQhaA1ePoHfaA3o2XZBMsQVDOkM1WpDeTe9KyuPKabdluUvVbt7vkufxlZLCGJ6w==",
+      "path": "selenium.webdriver.chromedriver/83.0.4103.3900",
+      "hashPath": "selenium.webdriver.chromedriver.83.0.4103.3900.nupkg.sha512"
     },
     "System.Data.SQLite.Core/1.0.112.2": {
       "type": "package",

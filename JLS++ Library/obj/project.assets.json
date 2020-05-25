@@ -35,7 +35,7 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "Selenium.Chrome.WebDriver/81.0.0": {
+      "Selenium.Chrome.WebDriver/83.0.0": {
         "type": "package",
         "build": {
           "build/Selenium.Chrome.WebDriver.targets": {}
@@ -53,7 +53,7 @@
           "lib/netstandard2.0/WebDriver.dll": {}
         }
       },
-      "Selenium.WebDriver.ChromeDriver/81.0.4044.13800": {
+      "Selenium.WebDriver.ChromeDriver/83.0.4103.3900": {
         "type": "package",
         "build": {
           "build/Selenium.WebDriver.ChromeDriver.targets": {}
@@ -280,16 +280,16 @@
         "packageIcon.png"
       ]
     },
-    "Selenium.Chrome.WebDriver/81.0.0": {
-      "sha512": "4ezM22zMCtSEVajf6uhn4YIDfP/LTMYt44vkgn6bZ4K2oTKIpVyw37JJh6O2ko4c3FiQe0quwH2ut4GkmmaedQ==",
+    "Selenium.Chrome.WebDriver/83.0.0": {
+      "sha512": "dnPhsNdTi3e9xsjKP+JzNX+CaHxhnZP1XscOBeQ2g5bPv5ot5E8KcIYuo0gtcVY8Y5e3ASzEnwjBpvtExKNstA==",
       "type": "package",
-      "path": "selenium.chrome.webdriver/81.0.0",
+      "path": "selenium.chrome.webdriver/83.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/Selenium.Chrome.WebDriver.targets",
         "driver/chromedriver.exe",
-        "selenium.chrome.webdriver.81.0.0.nupkg.sha512",
+        "selenium.chrome.webdriver.83.0.0.nupkg.sha512",
         "selenium.chrome.webdriver.nuspec"
       ]
     },
@@ -312,10 +312,10 @@
         "selenium.webdriver.nuspec"
       ]
     },
-    "Selenium.WebDriver.ChromeDriver/81.0.4044.13800": {
-      "sha512": "2b1bjeB0HmTw9wJ41FFcXXRTRMjf0Xm9nrlw1iK6tBTm3Rwqi5+UX9WWaj+lXp8itmmVOKmnYfq49aVDNq281w==",
+    "Selenium.WebDriver.ChromeDriver/83.0.4103.3900": {
+      "sha512": "lbVAHeSPf5E0IJNtsO5sf1rQhaA1ePoHfaA3o2XZBMsQVDOkM1WpDeTe9KyuPKabdluUvVbt7vkufxlZLCGJ6w==",
       "type": "package",
-      "path": "selenium.webdriver.chromedriver/81.0.4044.13800",
+      "path": "selenium.webdriver.chromedriver/83.0.4103.3900",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -323,7 +323,7 @@
         "driver/linux64/chromedriver",
         "driver/mac64/chromedriver",
         "driver/win32/chromedriver.exe",
-        "selenium.webdriver.chromedriver.81.0.4044.13800.nupkg.sha512",
+        "selenium.webdriver.chromedriver.83.0.4103.3900.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
       ]
     },
@@ -369,9 +369,9 @@
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 12.0.3",
-      "Selenium.Chrome.WebDriver >= 81.0.0",
+      "Selenium.Chrome.WebDriver >= 83.0.0",
       "Selenium.WebDriver >= 3.141.0",
-      "Selenium.WebDriver.ChromeDriver >= 81.0.4044.13800",
+      "Selenium.WebDriver.ChromeDriver >= 83.0.4103.3900",
       "System.Data.SQLite.Core >= 1.0.112.2"
     ]
   },
@@ -381,11 +381,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hyunc\\Source\\Repos\\alfksj\\JLS++\\JLS++ Library\\JLS++ Library.csproj",
+      "projectUniqueName": "C:\\Users\\hyunc\\source\\repos\\alfksj\\JLS++\\JLS++ Library\\JLS++ Library.csproj",
       "projectName": "JLS++ Library",
-      "projectPath": "C:\\Users\\hyunc\\Source\\Repos\\alfksj\\JLS++\\JLS++ Library\\JLS++ Library.csproj",
+      "projectPath": "C:\\Users\\hyunc\\source\\repos\\alfksj\\JLS++\\JLS++ Library\\JLS++ Library.csproj",
       "packagesPath": "C:\\Users\\hyunc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hyunc\\Source\\Repos\\alfksj\\JLS++\\JLS++ Library\\obj\\",
+      "outputPath": "C:\\Users\\hyunc\\source\\repos\\alfksj\\JLS++\\JLS++ Library\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hyunc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -424,7 +424,7 @@
           },
           "Selenium.Chrome.WebDriver": {
             "target": "Package",
-            "version": "[81.0.0, )"
+            "version": "[83.0.0, )"
           },
           "Selenium.WebDriver": {
             "target": "Package",
@@ -432,7 +432,7 @@
           },
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",
-            "version": "[81.0.4044.13800, )"
+            "version": "[83.0.4103.3900, )"
           },
           "System.Data.SQLite.Core": {
             "target": "Package",
@@ -449,7 +449,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
