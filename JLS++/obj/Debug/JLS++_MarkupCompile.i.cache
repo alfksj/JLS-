@@ -1,7 +1,7 @@
 ﻿JLS++
 
 
-winexe
+exe
 C#
 .cs
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\obj\Debug\
@@ -16,5 +16,5 @@ C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\App.xaml
 20211379003
 About.xaml;HelloWorld.xaml;last.xaml;MainWindow.xaml;
 
-False
+True
 

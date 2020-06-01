@@ -309,6 +309,7 @@ namespace JLS__
         }
         public void coffin(object sender, CancelEventArgs e)
         {
+            web.driver.Close();
             Application.Current.Shutdown();
         }
         public void aboutp(object senderm, RoutedEventArgs e)

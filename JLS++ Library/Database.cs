@@ -2,6 +2,7 @@
 using System.Data.SQLite;
 using System;
 using System.Collections;
+using System.Text;
 
 namespace JLS___Library.Data
 {
@@ -204,13 +205,13 @@ namespace JLS___Library.Data
             {
                 if((Int64)read["key"] == date)
                 {
-                    exeCommandWithoutOpenOfHw("update hw set content=\'" + content + "\', get=" + today + ", key=" + date + " where key=" + date) ;
+                    exeCommandWithoutOpenOfHw("update hw set content=\'" + preProcess(content) + "\', get=" + today + ", key=" + date + " where key=" + date) ;
                     hw.Close();
                     return;
                 }
             }
             read.Close();
-            exeCommandWithoutOpenOfHw("insert into hw (key, content, get) values (" + date + ", \'" + content + "\', " + today + ")");
+            exeCommandWithoutOpenOfHw("insert into hw (key, content, get) values (" + date + ", \'" + preProcess(content) + "\', " + today + ")");
             hw.Close();
         }
         public string getHw(int date)
@@ -277,6 +278,24 @@ namespace JLS___Library.Data
                     CurrentDate = "This homework is on " + yyyy + "/" + mm + "/" + dd + ".";
                 }
             }
+        }
+        public string preProcess(string content)
+        {
+            StringBuilder hw = new StringBuilder();
+            char[] s = content.ToCharArray();
+            foreach(char c in s)
+            {
+                switch(c)
+                {
+                    case '\'':
+                        hw.Append("\'\'");
+                        break;
+                    default:
+                        hw.Append(c);
+                        break;
+                }
+            }
+            return hw.ToString();
         }
         /// <summary>
         /// db를 완전히 지웁니다.
