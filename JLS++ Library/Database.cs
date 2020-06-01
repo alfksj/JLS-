@@ -213,6 +213,7 @@ namespace JLS___Library.Data
             exeCommandWithoutOpenOfHw("insert into hw (key, content, get) values (" + date + ", \'" + content + "\', " + today + ")");
             hw.Close();
         }
+        //
         public string getHw(int date)
         {
             hw.Open();
