@@ -9,7 +9,13 @@ using JLS___Library;
 using JLS___Library.Data;
 using System.Globalization;
 using System.Windows.Threading;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
+using MessageBoxButton = System.Windows.Forms.MessageBoxButtons;
+using MessageBoxResult = System.Windows.Forms.DialogResult;
+using Application = System.Windows.Application;
 using System.Text;
+using System.Drawing;
 
 namespace JLS__
 {
@@ -24,9 +30,9 @@ namespace JLS__
         public MainWindow()
         {
             //Write in UTF-8
-            //Console.OutputEncoding = new UTF8Encoding();
+            Console.OutputEncoding = new UTF8Encoding();
             HelloWorld hwx = new HelloWorld();
-            hwx.Show();
+            //hwx.Show();
             //언어정보 전파!
             db.loadAll();
             Setting.load();
@@ -37,6 +43,34 @@ namespace JLS__
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(langCode);
             debug.makeLog("Current Culture=" + CultureInfo.CurrentCulture.Name);
             InitializeComponent();
+            /////TRAY SYSTEM///////
+            NotifyIcon ni = new NotifyIcon();
+            ContextMenu tray = new ContextMenu();
+            MenuItem exit = new MenuItem();
+            exit.Index = 0;
+            exit.Text = rm.GetString("exit");
+            exit.Click += delegate (object click, EventArgs e)
+            {
+                coffin(null, null);
+            };
+            MenuItem open = new MenuItem();
+            open.Text = rm.GetString("open");
+            open.Click += delegate (object click, EventArgs e)
+            {
+                Show();
+            };
+            open.Index = 0;
+            tray.MenuItems.Add(open);
+            tray.MenuItems.Add(exit);
+            ni.Icon = new Icon("Resources/icon.ico");
+            ni.Visible = true;
+            ni.DoubleClick += delegate (object senders, EventArgs e)
+            {
+                Show();
+            };
+            ni.ContextMenu = tray;
+            ni.Text = "JLS++";
+            ///////////////////////
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1) //첫번째 인수는 프로세스 시작 위치니까 믿고 거른다.
             {
@@ -73,11 +107,11 @@ namespace JLS__
                         debug.makeLog("Reset Cache Data Reqested");
                         db.suicideOfHw();
                     }
-                    else if (cmd.Equals("-debug"))
+                    if (cmd.Equals("-debug"))
                     {
                         Console.WriteLine("YOU ARE USING DEBUG MODE\n========================================================");
                     }
-                    else if (cmd.Equals("-no_window"))
+                    if (cmd.Equals("-no_window"))
                     {
                         {
                             Hide();
@@ -113,6 +147,10 @@ namespace JLS__
                         thisis.Content = web.currentDate;
                     }));
                 }
+                hwreg.Dispatcher.Invoke(() =>
+                {
+                    hwreg.IsEnabled = true;
+                });
             });
             string cach = db.getLatestHw();
             if (!cach.Equals("NO CACHE DATA FOUND") && Setting.LoadCache)
@@ -311,6 +349,11 @@ namespace JLS__
         {
             web.driver.Close();
             Application.Current.Shutdown();
+        }
+        public void resurrection(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
         }
         public void aboutp(object senderm, RoutedEventArgs e)
         {

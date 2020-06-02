@@ -156,6 +156,9 @@ You can customize database setting here.</value>
   <data name="delCacheExplain" xml:space="preserve">
     <value>Delete all cache data which contains past homework</value>
   </data>
+  <data name="exit" xml:space="preserve">
+    <value>Quit JLS++</value>
+  </data>
   <data name="explain" xml:space="preserve">
     <value>JLS++ will help you to check homework of JLS
 I hope this will be an assistance of study.</value>
@@ -204,6 +207,9 @@ I hope this will be an assistance of study.</value>
   </data>
   <data name="name" xml:space="preserve">
     <value>Name : </value>
+  </data>
+  <data name="open" xml:space="preserve">
+    <value>Open JLS++</value>
   </data>
   <data name="profSetting" xml:space="preserve">
     <value>Profile Setting</value>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JLS__"
         mc:Ignorable="d"
-        Closing="coffin"
+        Closing="resurrection"
         Title="JLS++" Height="600" Width="1000" Icon="pack://siteoforigin:,,,/Resources/icon.png" ResizeMode="NoResize">
     <Border x:Name="headline" BorderBrush="Black" BorderThickness="2" Height="80" VerticalAlignment="Top">
         <Grid x:Name="head">
@@ -108,7 +108,7 @@
                         <TextBox x:Name="date" Height="22" Margin="76,0,10,10" TextWrapping="Wrap" VerticalAlignment="Bottom" FontFamily="Malgun Gothic"/>
                         <Label Content="{x:Static local:Localization.date}" HorizontalAlignment="Left" Margin="39,453,0,0" VerticalAlignment="Top" Width="37" Height="26"/>
                         <Label x:Name="thisis" Content="{x:Static local:Localization.unlad}" Margin="180,27,30,0" VerticalAlignment="Top" Grid.ColumnSpan="4" FontFamily="Malgun Gothic" FontSize="15" Height="32"/>
-                        <Button x:Name="hwreg" Content="{x:Static local:Localization.refres}" Margin="0,0,10,10" Height="22" VerticalAlignment="Bottom" Click="Button_Click_1" Grid.Column="1" FontFamily="Malgun Gothic"/>
+                        <Button x:Name="hwreg" Content="{x:Static local:Localization.refres}" Margin="0,0,10,10" Height="22" VerticalAlignment="Bottom" Click="Button_Click_1" Grid.Column="1" FontFamily="Malgun Gothic" IsEnabled="False"/>
                         <Button Content="{x:Static local:Localization.recon}" Margin="0,0,10,10" Grid.Column="2" FontFamily="Malgun Gothic" Height="22" VerticalAlignment="Bottom" Click="Button_Click_2" RenderTransformOrigin="-0.39,0.561"/>
                         <Button Content="ONW" Grid.Column="3" Margin="0,0,30,12" Height="20" VerticalAlignment="Bottom" Click="Button_Click_3"/>
                     </Grid>
