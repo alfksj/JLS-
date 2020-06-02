@@ -30,7 +30,7 @@ namespace JLS__
         public MainWindow()
         {
             //Write in UTF-8
-            Console.OutputEncoding = new UTF8Encoding();
+            //Console.OutputEncoding = new UTF8Encoding();
             HelloWorld hwx = new HelloWorld();
             //hwx.Show();
             //언어정보 전파!
@@ -159,7 +159,7 @@ namespace JLS__
                 html_stream.Text = cach;
                 thisis.Content = db.currentDate;
             }
-            hwx.Hide();
+            //hwx.Hide();
         }
 
         public void UpdateWindow()
