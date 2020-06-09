@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Love. Jahee.
+//Even we're far, we're one.
+//I love you
+
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
@@ -14,7 +18,6 @@ using MessageBox = System.Windows.Forms.MessageBox;
 using MessageBoxButton = System.Windows.Forms.MessageBoxButtons;
 using MessageBoxResult = System.Windows.Forms.DialogResult;
 using Application = System.Windows.Application;
-using System.Text;
 using System.Drawing;
 
 namespace JLS__
@@ -24,6 +27,7 @@ namespace JLS__
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool debugging = false;
         private Database db = new Database();
         private WebControl web = null;
         private Thread currentThread = Thread.CurrentThread;
@@ -109,6 +113,7 @@ namespace JLS__
                     }
                     if (cmd.Equals("-debug"))
                     {
+                        debugging = true;
                         Console.WriteLine("YOU ARE USING DEBUG MODE\n========================================================");
                     }
                     if (cmd.Equals("-no_window"))
@@ -348,10 +353,22 @@ namespace JLS__
         public void coffin(object sender, CancelEventArgs e)
         {
             web.driver.Close();
+            ///Kill chrome process when exit
+            Process process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "taskkkill /im chromedriver.exe";
+            process.StartInfo = startInfo;
+            process.Start();
             Application.Current.Shutdown();
         }
         public void resurrection(object sender, CancelEventArgs e)
         {
+            if(debugging)
+            {
+                coffin(null, null);
+            }
             e.Cancel = true;
             Hide();
         }
