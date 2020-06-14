@@ -10,11 +10,12 @@
     <Border x:Name="headline" BorderBrush="Black" BorderThickness="2" Height="80" VerticalAlignment="Top">
         <Grid x:Name="head">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="349*"/>
-                <ColumnDefinition Width="145*"/>
+                <ColumnDefinition Width="133*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="97*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="time" Content="2020/05/04  12:53:23" Margin="10,4,0,4" FontFamily="Malgun Gothic" FontSize="30" FontWeight="Bold"/>
-            <Border x:Name="profileline" BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="1">
+            <Label x:Name="time" Content="2020/05/04  12:53:23" Margin="10,4" FontFamily="Malgun Gothic" FontSize="30" FontWeight="Bold"/>
+            <Border x:Name="profileline" BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="2">
                 <Grid x:Name="profile">
                     <Label x:Name="name" Content="{x:Static local:Localization.setProf}" Margin="64,0,5,0" VerticalAlignment="Top" Height="46" FontSize="20" FontWeight="Bold" FontFamily="Malgun Gothic"/>
                     <Button x:Name="setting" Content="{x:Static local:Localization.setting}" Margin="64,46,140,0" FontFamily="Malgun Gothic" FontSize="15" BorderBrush="{x:Null}" Foreground="#FF686868" Background="{x:Null}" Click="setting_Click" RenderTransformOrigin="-0.653,0.562"/>
@@ -22,7 +23,7 @@
                 </Grid>
             </Border>
             <Grid HorizontalAlignment="Left" Height="76" Margin="185,170,0,-170" VerticalAlignment="Top" Width="100"/>
-            <Grid x:Name="root" Height="488" Margin="0,0,0,-491" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+            <Grid x:Name="root" Height="488" Margin="0,0,0,-491" VerticalAlignment="Bottom" Grid.ColumnSpan="3">
                 <Grid x:Name="settingPage" Background="#FFFFFF" Visibility="Hidden">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="97*"/>
@@ -114,6 +115,7 @@
                     </Grid>
                 </Border>
             </Grid>
+            <TextBlock x:Name="cure" Grid.Column="1" Margin="10" TextWrapping="Wrap" Text="YOU'RE CURRENTLY USING DEBUG MOD" FontFamily="Malgun Gothic" FontSize="20" TextAlignment="Center" Visibility="Hidden"/>
         </Grid>
     </Border>
 </Window>

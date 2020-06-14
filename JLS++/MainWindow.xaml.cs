@@ -1,8 +1,4 @@
-﻿//Love. Jahee.
-//Even we're far, we're one.
-//I love you
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
@@ -76,6 +72,7 @@ namespace JLS__
             ni.Text = "JLS++";
             ///////////////////////
             string[] args = Environment.GetCommandLineArgs();
+            bool amw = false;
             if (args.Length > 1) //첫번째 인수는 프로세스 시작 위치니까 믿고 거른다.
             {
                 string q = args[1] + "\n";
@@ -113,6 +110,7 @@ namespace JLS__
                     }
                     if (cmd.Equals("-debug"))
                     {
+                        cure.Visibility = Visibility.Visible;
                         debugging = true;
                         Console.WriteLine("YOU ARE USING DEBUG MODE\n========================================================");
                     }
@@ -122,10 +120,25 @@ namespace JLS__
                             Hide();
                         }
                     }
+                    if(cmd.Equals("-allow_multi_process"))
+                    {
+                        amw = true;
+                    }
                 }
             }
             UpdateWindow();
             savePath.Text = System.Environment.GetEnvironmentVariable("appdata") + "/.JLS++/data.db";
+            /////////////////Detect JLS++.exe/////////////////
+            Process[] pname = Process.GetProcessesByName("JLS++");
+            if (pname.Length == 1 || amw)
+                debug.makeLog("Process was not detected(or allowed)");
+            else
+            {
+                debug.makeLog("Process was detected ("+pname.Length+')');
+                MessageBox.Show(rm.GetString("alreadyRunning"), "JLS++", MessageBoxButton.OK);
+                Application.Current.Shutdown();
+            }
+            ////////////////////////////////////////////
             Task.Run(async () =>//시간 새로고침
             {
                 while (true)
