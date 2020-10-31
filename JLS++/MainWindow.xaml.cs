@@ -150,8 +150,10 @@ namespace JLS__
             });
             Task.Run(() =>//시작할때 눈치껏 브라우저 초기화 & 접속 & 숙제 로드
             {
-                web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang, db);
-                web.langCode = langCode;
+                web = new WebControl(WebControl.usr_agent, WebControl.gpu_acc, WebControl.fake_plugin, WebControl.use_win, WebControl.lang, db)
+                {
+                    langCode = langCode
+                };
                 var hw = web.load();
                 var rlm = localize(hw);
                 if (hw.Contains("failure:") || Setting.LoadDatAtSet)
@@ -164,6 +166,7 @@ namespace JLS__
                     {
                         thisis.Content = web.currentDate;
                     }));
+                    return;
                 }
                 hwreg.Dispatcher.Invoke(() =>
                 {
@@ -247,7 +250,7 @@ namespace JLS__
             {
                 if(currentLang.Equals("ko-KR"))
                 {
-                    Whatsetting.Content = rm.GetString("settedProfile");
+                    Whatsetting.Content = Secure.Propile.Name + rm.GetString("settedProfile");
                 }
                 else
                 {

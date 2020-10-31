@@ -29,7 +29,6 @@ C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\bin\Debug\System.Data.SQLite.xml
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\bin\Debug\System.Data.SQLite.dll.config
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\bin\Debug\WebDriver.xml
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.csprojAssemblyReference.cache
-C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.exe.config
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\obj\Debug\About.g.cs
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\obj\Debug\HelloWorld.g.cs
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\obj\Debug\last.g.cs
@@ -54,3 +53,28 @@ C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\obj\Debug\en-US\JLS++.resources.d
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.csproj.CopyComplete
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.exe
 C:\Users\hyunc\source\repos\alfksj\JLS++\JLS++\obj\Debug\JLS++.pdb
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\ko-KR\JLS++.resources.dll
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\en-US\JLS++.resources.dll
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\HtmlToXamlConverter.dll
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\JLS++ Library.dll
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\Newtonsoft.Json.dll
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\System.Data.SQLite.dll
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\WebDriver.dll
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\JLS++ Library.pdb
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\Newtonsoft.Json.xml
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\System.Data.SQLite.xml
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\hyunc\source\repos\JLS++\JLS++\bin\Debug\WebDriver.xml
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\About.g.cs
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\HelloWorld.g.cs
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\last.g.cs
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\About.baml
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\HelloWorld.baml
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\last.baml
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\JLS__.Localization.resources
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\JLS__.Localization.ko-KR.resources
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\JLS__.Localization.en-US.resources
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\ko-KR\JLS++.resources.dll
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\en-US\JLS++.resources.dll
+C:\Users\hyunc\source\repos\JLS++\JLS++\obj\Debug\JLS++.csproj.CopyComplete
