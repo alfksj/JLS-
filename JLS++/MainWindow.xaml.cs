@@ -368,13 +368,14 @@ namespace JLS__
         }
         public void coffin(object sender, CancelEventArgs e)
         {
-            web.driver.Close();
             ///Kill chrome process when exit
             Process process = new Process();
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = "taskkkill /im chromedriver.exe";
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                WindowStyle = ProcessWindowStyle.Hidden,
+                FileName = "cmd.exe",
+                Arguments = "taskkkill /f /im chromedriver.exe"
+            };
             process.StartInfo = startInfo;
             process.Start();
             Application.Current.Shutdown();
