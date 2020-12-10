@@ -6,7 +6,7 @@
 ;----------------------------------------------------------
 !define PRODUCT_NAME "JLS++"
 !define PRODUCT_VERSION "1.1.0"
-!define PRODUCT_PUBLISHER "Alfksj"
+!define PRODUCT_PUBLISHER "Miho"
 #!define PRODUCT_WEBSITE ""
 !define EXEFILE_NAME "JLS++"
 !define EXEFULL_NAME "${EXEFILE_NAME}.exe"
